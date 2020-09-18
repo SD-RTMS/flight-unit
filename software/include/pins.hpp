@@ -1,3 +1,14 @@
+/**
+ * @file pins.hpp
+ * @author Daniel Stumpp (dcs98@pitt.edu)
+ * @brief pin definitions for flight-unit
+ * @version 0.1
+ * @date 2020-09-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #ifndef PINS_HPP
 #define PINS_HPP
 
