@@ -13457,9 +13457,9 @@ Team 5 (Stumpp, Corcoran)
 </net>
 <net name="MEM_CS0" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="10/CS"/>
-<wire x1="114.3" y1="83.82" x2="99.06" y2="83.82" width="0.1524" layer="91"/>
-<label x="86.36" y="83.82" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="8/TX2"/>
+<wire x1="114.3" y1="88.9" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
+<label x="86.36" y="88.9" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MEM_CS1" class="0">
@@ -13467,13 +13467,6 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="U$1" gate="G$1" pin="9"/>
 <wire x1="114.3" y1="86.36" x2="99.06" y2="86.36" width="0.1524" layer="91"/>
 <label x="86.36" y="86.36" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="MEM_CS2" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="8/TX2"/>
-<wire x1="114.3" y1="88.9" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
-<label x="86.36" y="88.9" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IIC_SDA" class="0">
@@ -13615,6 +13608,13 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="U$1" gate="G$1" pin="3V3_LO"/>
 <wire x1="154.94" y1="106.68" x2="170.18" y2="106.68" width="0.1524" layer="91"/>
 <label x="170.18" y="106.68" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="MEM_CS2" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="10/CS"/>
+<wire x1="114.3" y1="83.82" x2="99.06" y2="83.82" width="0.1524" layer="91"/>
+<label x="86.36" y="83.82" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
