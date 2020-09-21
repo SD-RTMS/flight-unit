@@ -18,10 +18,28 @@ private:
 
 public:
     
+    /**
+     * @brief initializes the fram module
+     * 
+     * @return true 
+     * @return false 
+     */
     bool init(uint8_t);
 
+    /**
+     * @brief reads the data packet from the fram module
+     * 
+     * @return true 
+     * @return false 
+     */
     bool read(Data *);
 
+    /**
+     * @brief writes the packet to the fram module
+     * 
+     * @return true 
+     * @return false 
+     */
     bool write(Data);
 
 };

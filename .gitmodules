@@ -1,0 +1,3 @@
+[submodule "software/lib/Adafruit_BNO055"]
+	path = software/lib/Adafruit_BNO055
+	url = https://github.com/adafruit/Adafruit_BNO055.git
