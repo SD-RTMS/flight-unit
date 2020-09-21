@@ -14368,6 +14368,129 @@ naming: grid - package width</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="con-jst" urn="urn:adsk.eagle:library:156">
+<description>&lt;b&gt;J.S.T. Connectors&lt;/b&gt;&lt;p&gt;
+J.S.T Mfg Co.,Ltd.&lt;p&gt;
+http://www.jst-mfg.com&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="B4B-ZR" urn="urn:adsk.eagle:footprint:7619/1" library_version="2">
+<description>&lt;b&gt;ZH CONNECTOR&lt;/b&gt;  Top entry type, 1.5 mm, 4 pin 1 row&lt;p&gt;
+Source: http://www.jst.com .. eZH.pdf</description>
+<wire x1="3.65" y1="-2.1" x2="-3.65" y2="-2.1" width="0.2032" layer="21"/>
+<wire x1="-3.65" y1="-2.1" x2="-3.65" y2="1.2" width="0.2032" layer="21"/>
+<wire x1="3.65" y1="1.2" x2="3.65" y2="-2.1" width="0.2032" layer="21"/>
+<wire x1="3.65" y1="1.2" x2="-3.65" y2="1.2" width="0.2032" layer="21"/>
+<wire x1="-3.25" y1="1" x2="-3.25" y2="1.15" width="0.2032" layer="21"/>
+<wire x1="-3.25" y1="1" x2="-2.75" y2="1" width="0.2032" layer="21"/>
+<wire x1="-2.75" y1="1" x2="-2.75" y2="1.15" width="0.2032" layer="21"/>
+<pad name="1" x="-2.25" y="0" drill="0.7" diameter="1.1"/>
+<pad name="2" x="-0.75" y="0" drill="0.7" diameter="1.1"/>
+<pad name="3" x="0.75" y="0" drill="0.7" diameter="1.1"/>
+<pad name="4" x="2.25" y="0" drill="0.7" diameter="1.1"/>
+<text x="-3.75" y="1.5" size="1.27" layer="25">&gt;NAME</text>
+<text x="-3.75" y="-3.5" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+<package name="S4B-ZR" urn="urn:adsk.eagle:footprint:7620/1" library_version="2">
+<description>&lt;b&gt;ZH CONNECTOR&lt;/b&gt; Side entry type, 1.5 mm, 4 pin 1 row&lt;p&gt;
+Source: http://www.jst.com .. eZH.pdf</description>
+<wire x1="3.65" y1="-4.5" x2="-3.65" y2="-4.5" width="0.2032" layer="21"/>
+<wire x1="-3.65" y1="-4.5" x2="-3.65" y2="1.275" width="0.2032" layer="21"/>
+<wire x1="3.65" y1="1.275" x2="3.65" y2="-4.5" width="0.2032" layer="21"/>
+<wire x1="3.65" y1="1.275" x2="-3.65" y2="1.275" width="0.2032" layer="21"/>
+<wire x1="-3.55" y1="0.325" x2="3.55" y2="0.325" width="0.2032" layer="51"/>
+<pad name="1" x="-2.25" y="0" drill="0.7" diameter="1.1"/>
+<pad name="2" x="-0.75" y="0" drill="0.7" diameter="1.1"/>
+<pad name="3" x="0.75" y="0" drill="0.7" diameter="1.1"/>
+<pad name="4" x="2.25" y="0" drill="0.7" diameter="1.1"/>
+<text x="-3.75" y="1.5" size="1.27" layer="25">&gt;NAME</text>
+<text x="-3.81" y="-6.35" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="B4B-ZR" urn="urn:adsk.eagle:package:7642/1" type="box" library_version="2">
+<description>ZH CONNECTOR  Top entry type, 1.5 mm, 4 pin 1 row
+Source: http://www.jst.com .. eZH.pdf</description>
+<packageinstances>
+<packageinstance name="B4B-ZR"/>
+</packageinstances>
+</package3d>
+<package3d name="S4B-ZR" urn="urn:adsk.eagle:package:7641/1" type="box" library_version="2">
+<description>ZH CONNECTOR Side entry type, 1.5 mm, 4 pin 1 row
+Source: http://www.jst.com .. eZH.pdf</description>
+<packageinstances>
+<packageinstance name="S4B-ZR"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="PM-VN" urn="urn:adsk.eagle:symbol:7617/1" library_version="2">
+<wire x1="0.254" y1="0" x2="-1.524" y2="0" width="0.4064" layer="94"/>
+<text x="1.016" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
+<text x="-4.064" y="1.524" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-5.08" y="0" visible="off" length="middle" direction="pas"/>
+</symbol>
+<symbol name="PM-N" urn="urn:adsk.eagle:symbol:7618/1" library_version="2">
+<wire x1="0.254" y1="0" x2="-1.524" y2="0" width="0.4064" layer="94"/>
+<text x="1.016" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
+<pin name="1" x="-5.08" y="0" visible="off" length="middle" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="?4B-ZR" urn="urn:adsk.eagle:component:7666/2" prefix="X" library_version="2">
+<description>&lt;b&gt;ZH CONNECTOR&lt;/b&gt; 1.5 mm, 4 pin 1 row&lt;p&gt;
+Source: http://www.jst.com .. eZH.pdf</description>
+<gates>
+<gate name="-1" symbol="PM-VN" x="0" y="0" addlevel="always"/>
+<gate name="-2" symbol="PM-N" x="0" y="-2.54" addlevel="always"/>
+<gate name="-3" symbol="PM-N" x="0" y="-5.08" addlevel="always"/>
+<gate name="-4" symbol="PM-N" x="0" y="-7.62" addlevel="always"/>
+</gates>
+<devices>
+<device name="B" package="B4B-ZR">
+<connects>
+<connect gate="-1" pin="1" pad="1"/>
+<connect gate="-2" pin="1" pad="2"/>
+<connect gate="-3" pin="1" pad="3"/>
+<connect gate="-4" pin="1" pad="4"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:7642/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="FARNELL" constant="no"/>
+<attribute name="MPN" value="B4B-ZR(LF)(SN)" constant="no"/>
+<attribute name="OC_FARNELL" value="1830916" constant="no"/>
+<attribute name="OC_NEWARK" value="37K9960" constant="no"/>
+<attribute name="POPULARITY" value="3" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="S" package="S4B-ZR">
+<connects>
+<connect gate="-1" pin="1" pad="1"/>
+<connect gate="-2" pin="1" pad="2"/>
+<connect gate="-3" pin="1" pad="3"/>
+<connect gate="-4" pin="1" pad="4"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:7641/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="FARNELL" constant="no"/>
+<attribute name="MPN" value="S4B-ZR(LF)(SN)" constant="no"/>
+<attribute name="OC_FARNELL" value="9491830" constant="no"/>
+<attribute name="OC_NEWARK" value="38K8076" constant="no"/>
+<attribute name="POPULARITY" value="0" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14436,6 +14559,10 @@ naming: grid - package width</description>
 <part name="GND1" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="C2" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="2,5-3" package3d_urn="urn:adsk.eagle:package:5436/1" value="0.1uf"/>
 <part name="GND2" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
+<part name="X1" library="con-jst" library_urn="urn:adsk.eagle:library:156" deviceset="?4B-ZR" device="S" package3d_urn="urn:adsk.eagle:package:7641/1"/>
+<part name="X2" library="con-jst" library_urn="urn:adsk.eagle:library:156" deviceset="?4B-ZR" device="S" package3d_urn="urn:adsk.eagle:package:7641/1"/>
+<part name="GND9" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
+<part name="GND10" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14503,8 +14630,8 @@ ECE Senior Design Fall 2020
 Team 5 (Stumpp, Corcoran)
 </text>
 <text x="82.55" y="161.29" size="5.08" layer="97">Power Regulation and Supply</text>
-<text x="68.58" y="109.22" size="1.778" layer="91">ISS Power Source</text>
-<text x="114.3" y="81.28" size="1.778" layer="91">Backup Battery Input </text>
+<text x="78.74" y="116.84" size="1.778" layer="91">ISS Power Source</text>
+<text x="106.68" y="76.2" size="1.778" layer="91">Backup Battery Input </text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0" smashed="yes">
@@ -14512,9 +14639,9 @@ Team 5 (Stumpp, Corcoran)
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94"/>
 </instance>
-<instance part="D1" gate="1" x="105.41" y="110.49" smashed="yes">
-<attribute name="NAME" x="107.95" y="110.9726" size="1.778" layer="95"/>
-<attribute name="VALUE" x="107.95" y="108.1786" size="1.778" layer="96"/>
+<instance part="D1" gate="1" x="110.49" y="110.49" smashed="yes">
+<attribute name="NAME" x="113.03" y="110.9726" size="1.778" layer="95"/>
+<attribute name="VALUE" x="113.03" y="108.1786" size="1.778" layer="96"/>
 </instance>
 <instance part="D2" gate="1" x="129.54" y="100.33" smashed="yes" rot="R90">
 <attribute name="NAME" x="129.0574" y="102.87" size="1.778" layer="95" rot="R90"/>
@@ -14548,6 +14675,26 @@ Team 5 (Stumpp, Corcoran)
 <instance part="GND2" gate="1" x="134.62" y="93.98" smashed="yes">
 <attribute name="VALUE" x="134.62" y="93.726" size="1.778" layer="96" align="top-center"/>
 </instance>
+<instance part="X1" gate="-1" x="116.84" y="86.36" smashed="yes" rot="MR0">
+<attribute name="NAME" x="115.824" y="85.598" size="1.524" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="120.904" y="87.884" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="X1" gate="-2" x="116.84" y="83.82" smashed="yes" rot="MR0">
+<attribute name="NAME" x="115.824" y="83.058" size="1.524" layer="95" rot="MR0"/>
+</instance>
+<instance part="X2" gate="-1" x="88.9" y="111.76" smashed="yes" rot="MR0">
+<attribute name="NAME" x="87.884" y="110.998" size="1.524" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="92.964" y="113.284" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="X2" gate="-2" x="88.9" y="109.22" smashed="yes" rot="MR0">
+<attribute name="NAME" x="87.884" y="108.458" size="1.524" layer="95" rot="MR0"/>
+</instance>
+<instance part="GND9" gate="1" x="96.52" y="106.68" smashed="yes">
+<attribute name="VALUE" x="96.52" y="106.426" size="1.778" layer="96" align="top-center"/>
+</instance>
+<instance part="GND10" gate="1" x="121.92" y="81.28" smashed="yes">
+<attribute name="VALUE" x="121.92" y="81.026" size="1.778" layer="96" align="top-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -14558,7 +14705,8 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="D2" gate="1" pin="A"/>
 <wire x1="121.92" y1="95.25" x2="129.54" y2="95.25" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="95.25" x2="129.54" y2="97.79" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="95.25" x2="121.92" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="X1" gate="-1" pin="1"/>
+<wire x1="121.92" y1="86.36" x2="121.92" y2="95.25" width="0.1524" layer="91"/>
 <junction x="121.92" y="95.25"/>
 </segment>
 </net>
@@ -14566,7 +14714,7 @@ Team 5 (Stumpp, Corcoran)
 <segment>
 <pinref part="D1" gate="1" pin="C"/>
 <pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="107.95" y1="110.49" x2="121.92" y2="110.49" width="0.1524" layer="91"/>
+<wire x1="113.03" y1="110.49" x2="121.92" y2="110.49" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="110.49" x2="121.92" y2="105.41" width="0.1524" layer="91"/>
 <junction x="121.92" y="110.49"/>
 <pinref part="D2" gate="1" pin="C"/>
@@ -14579,12 +14727,6 @@ Team 5 (Stumpp, Corcoran)
 <wire x1="134.62" y1="106.68" x2="134.62" y2="110.49" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="110.49" x2="137.16" y2="110.49" width="0.1524" layer="91"/>
 <junction x="137.16" y="110.49"/>
-</segment>
-</net>
-<net name="N$4" class="0">
-<segment>
-<pinref part="D1" gate="1" pin="A"/>
-<wire x1="91.44" y1="110.49" x2="102.87" y2="110.49" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -14614,10 +14756,27 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="GND2" gate="1" pin="GND"/>
 <wire x1="134.62" y1="99.06" x2="134.62" y2="96.52" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="X2" gate="-2" pin="1"/>
+<pinref part="GND9" gate="1" pin="GND"/>
+<wire x1="93.98" y1="109.22" x2="96.52" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND10" gate="1" pin="GND"/>
+<pinref part="X1" gate="-2" pin="1"/>
+</segment>
 </net>
 <net name="N$9" class="0">
 <segment>
 <junction x="134.62" y="110.49"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="X2" gate="-1" pin="1"/>
+<pinref part="D1" gate="1" pin="A"/>
+<wire x1="93.98" y1="111.76" x2="107.95" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="107.95" y1="111.76" x2="107.95" y2="110.49" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
