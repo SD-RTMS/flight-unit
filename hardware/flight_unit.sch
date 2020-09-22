@@ -17487,6 +17487,71 @@ Source: http://www.jst.com .. eZH.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="SparkFun-Retired">
+<description>&lt;h3&gt;SparkFun Electronics' Retired foot prints&lt;/h3&gt;
+In this library you'll find all manner of retired footprints for resistors, capacitors, board names, ICs, etc., that are &lt;b&gt; no longer used&lt;/b&gt; in our catalog.
+&lt;br&gt;
+&lt;br&gt;
+We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
+&lt;br&gt;
+&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
+&lt;br&gt;
+&lt;br&gt;
+You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
+<packages>
+<package name="SIMPLE_HOLE">
+<description>&lt;h3&gt;Simple Hole&lt;/h3&gt;
+Sew hole
+&lt;p&gt;Specifications:
+&lt;li&gt;Drill: 0.1in&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;SEW_HOLE&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<pad name="P$1" x="0" y="0" drill="2.54" diameter="3.048"/>
+<text x="-1.27" y="1.651" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-1.27" y="-1.651" size="0.6096" layer="27" font="vector" ratio="20" align="top-left">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="SIMPLE_HOLE">
+<description>&lt;h3&gt;Simple Hole&lt;/h3&gt;
+&lt;p&gt;Basic conductive hole with single IO connection available.&lt;/p&gt;</description>
+<circle x="0" y="0" radius="2.54" width="0.254" layer="94"/>
+<pin name="P$1" x="-5.08" y="0" visible="off" length="short"/>
+<text x="-2.54" y="2.794" size="1.778" layer="95" font="vector">&gt;NAME</text>
+<text x="-2.54" y="-2.794" size="1.778" layer="96" font="vector" align="top-left">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SEW_HOLE" prefix="H">
+<description>&lt;h3&gt;SparkFun LilyPad Sew Hole&lt;/h3&gt;
+&lt;p&gt;Simple sew-tap with .1" diameter hole with 20mil annular ring&lt;/p&gt;
+&lt;p&gt;SparkFun Products:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=”[PRODUCT1LINK]”&gt;[PRODUCT 1]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=”PRODUCT2LINK”&gt;[PRODUCT 2]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=”PRODUCT3LINK”&gt;[PRODUCT 3]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="SIMPLE_HOLE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SIMPLE_HOLE">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -17567,6 +17632,9 @@ Source: http://www.jst.com .. eZH.pdf</description>
 <part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R1210" package3d_urn="urn:adsk.eagle:package:23554/2" value="1k"/>
 <part name="+3V5" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V11" library="supply1" deviceset="+3V3" device=""/>
+<part name="H1" library="SparkFun-Retired" deviceset="SEW_HOLE" device=""/>
+<part name="H2" library="SparkFun-Retired" deviceset="SEW_HOLE" device=""/>
+<part name="GND15" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -17699,6 +17767,17 @@ Team 5 (Stumpp, Corcoran)
 <instance part="GND10" gate="1" x="121.92" y="81.28" smashed="yes">
 <attribute name="VALUE" x="121.92" y="81.026" size="1.778" layer="96" align="top-center"/>
 </instance>
+<instance part="H1" gate="G$1" x="223.52" y="109.22" smashed="yes">
+<attribute name="NAME" x="220.98" y="112.014" size="1.778" layer="95" font="vector"/>
+<attribute name="VALUE" x="220.98" y="106.426" size="1.778" layer="96" font="vector" align="top-left"/>
+</instance>
+<instance part="H2" gate="G$1" x="223.52" y="96.52" smashed="yes">
+<attribute name="NAME" x="220.98" y="99.314" size="1.778" layer="95" font="vector"/>
+<attribute name="VALUE" x="220.98" y="93.726" size="1.778" layer="96" font="vector" align="top-left"/>
+</instance>
+<instance part="GND15" gate="1" x="215.9" y="78.74" smashed="yes">
+<attribute name="VALUE" x="215.9" y="78.486" size="1.778" layer="96" align="top-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -17768,6 +17847,15 @@ Team 5 (Stumpp, Corcoran)
 <segment>
 <pinref part="GND10" gate="1" pin="GND"/>
 <pinref part="X1" gate="-2" pin="1"/>
+</segment>
+<segment>
+<pinref part="GND15" gate="1" pin="GND"/>
+<wire x1="215.9" y1="81.28" x2="215.9" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="H1" gate="G$1" pin="P$1"/>
+<wire x1="218.44" y1="109.22" x2="215.9" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="109.22" x2="215.9" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="H2" gate="G$1" pin="P$1"/>
+<wire x1="215.9" y1="96.52" x2="218.44" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$9" class="0">
