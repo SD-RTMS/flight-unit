@@ -10,6 +10,7 @@
  */
 
 #include "memory_if.hpp"
+#include <Arduino.h>
 
 /****** Private Methods ******/
 uint8_t memory_if::majority_voter(Data d1, Data d2, Data d3)
@@ -32,5 +33,11 @@ memory_if::memory_if()
 memory_if::~memory_if()
 {
     delete[] devices;
+}
+
+bool memory_if::init()
+{
+    Serial.println("Memory interface initialized...");
+    return true;
 }
 

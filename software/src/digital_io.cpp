@@ -10,9 +10,11 @@
  */
 
 #include "digital_io.hpp"
+#include <Arduino.h>
 
 bool digital_io::init()
 {
+    Serial.println("digital I/O bank initialized...");
     return true;
 }
 

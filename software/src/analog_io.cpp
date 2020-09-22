@@ -10,6 +10,7 @@
  */
 
 #include "analog_io.hpp"
+#include <Arduino.h>
 
 /* Private Methods */
 
@@ -27,6 +28,7 @@ float analog_io::convert_voltage(uint16_t raw)
 
 bool analog_io::init()
 {
+    Serial.println("Analog I/O bank object initialized...");
     return true;
 }
 
