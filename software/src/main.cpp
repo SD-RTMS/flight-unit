@@ -10,13 +10,20 @@
  */
 
 #include <Arduino.h>
-#include "imu.hpp"
+#include "Imu.hpp"
 #include "analog_io.hpp"
 #include "digital_io.hpp"
 #include "memory_if.hpp"
 #include "space_computer.hpp"
 
 #define INIT_ATTEMPTS 3
+#define SAMP_DELAY    5
+
+IMU Imu;
+memory_if memIf;
+analog_io analogIo;
+digital_io digitalIo;
+space_computer spaceComp;
 
 /**
  * @brief Setup function run on startup
@@ -24,15 +31,8 @@
  */
 void setup() 
 {
-  // create the objects peripheral objects
-  IMU             imu;
-  memory_if       memIf;
-  analog_io       analogIo;
-  digital_io      digitalIo;
-  space_computer  spaceComp;
-
   uint8_t cnt = 1;
-  while (!imu.init() && cnt <= INIT_ATTEMPTS)
+  while (!Imu.init() && cnt <= INIT_ATTEMPTS)
   {
     delayMicroseconds(100);
     cnt++;
@@ -73,5 +73,23 @@ void setup()
  * 
  */
 void loop() {
-  // put your main code here, to run repeatedly:
+  // Dummy function to begin polling functions and sending data
+  Data *packet = new Data;
+
+  Serial.println("Reading IMU...");
+  Imu.read(packet);
+  Serial.println("Reading digital I/O bank...");
+  digitalIo.read(packet);
+  Serial.println("Reading analog I/O bank...");
+  analogIo.read(packet);
+  Serial.println("Reading Space Computer interface..");
+  spaceComp.read(packet,1);
+  Serial.println("Writing to memory...");
+  memIf.write(*packet);
+
+  delay(1);
+  while (!Serial.available()){}
+  Serial.println("Reading Memory interface...");
+
+  delay(SAMP_DELAY);
 }

@@ -41,3 +41,13 @@ bool memory_if::init()
     return true;
 }
 
+bool memory_if::write(Data data)
+{
+    return true;
+}
+
+bool memory_if::read(Data *)
+{
+    return true;
+}
+
