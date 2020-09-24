@@ -17635,6 +17635,8 @@ Sew hole
 <part name="H1" library="SparkFun-Retired" deviceset="SEW_HOLE" device=""/>
 <part name="H2" library="SparkFun-Retired" deviceset="SEW_HOLE" device=""/>
 <part name="GND15" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
+<part name="R2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R1210" package3d_urn="urn:adsk.eagle:package:23554/2" value="1k"/>
+<part name="+3V12" library="supply1" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -18152,13 +18154,6 @@ Team 5 (Stumpp, Corcoran)
 <wire x1="157.48" y1="111.76" x2="157.48" y2="115.57" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="SC_D0" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="0/RX1"/>
-<wire x1="114.3" y1="109.22" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
-<label x="91.44" y="109.22" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="SC_D1" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="1/TX1"/>
@@ -18168,9 +18163,9 @@ Team 5 (Stumpp, Corcoran)
 </net>
 <net name="SC_D2" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="2"/>
-<wire x1="114.3" y1="104.14" x2="99.06" y2="104.14" width="0.1524" layer="91"/>
-<label x="91.44" y="104.14" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="0/RX1"/>
+<wire x1="114.3" y1="109.22" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
+<label x="91.44" y="109.22" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SC_D3" class="0">
@@ -18189,9 +18184,9 @@ Team 5 (Stumpp, Corcoran)
 </net>
 <net name="LED_0" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="5"/>
-<wire x1="114.3" y1="96.52" x2="99.06" y2="96.52" width="0.1524" layer="91"/>
-<label x="91.44" y="96.52" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="7/RX2"/>
+<wire x1="114.3" y1="91.44" x2="99.06" y2="91.44" width="0.1524" layer="91"/>
+<label x="91.44" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED_1" class="0">
@@ -18199,20 +18194,6 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="U$1" gate="G$1" pin="6"/>
 <wire x1="114.3" y1="93.98" x2="99.06" y2="93.98" width="0.1524" layer="91"/>
 <label x="91.44" y="93.98" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="LED_2" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="7/RX2"/>
-<wire x1="114.3" y1="91.44" x2="99.06" y2="91.44" width="0.1524" layer="91"/>
-<label x="91.44" y="91.44" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="T_0" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="14/A0/TX3"/>
-<wire x1="154.94" y1="81.28" x2="170.18" y2="81.28" width="0.1524" layer="91"/>
-<label x="170.18" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="T_1" class="0">
@@ -18224,16 +18205,16 @@ Team 5 (Stumpp, Corcoran)
 </net>
 <net name="V_0" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="16/A2/RX4"/>
-<wire x1="154.94" y1="86.36" x2="170.18" y2="86.36" width="0.1524" layer="91"/>
-<label x="170.18" y="86.36" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="14/A0/TX3"/>
+<wire x1="154.94" y1="81.28" x2="170.18" y2="81.28" width="0.1524" layer="91"/>
+<label x="170.18" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="V_1" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="17/A3/TX4"/>
-<wire x1="154.94" y1="88.9" x2="170.18" y2="88.9" width="0.1524" layer="91"/>
-<label x="170.18" y="88.9" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="16/A2/RX4"/>
+<wire x1="154.94" y1="86.36" x2="170.18" y2="86.36" width="0.1524" layer="91"/>
+<label x="170.18" y="86.36" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="A_0" class="0">
@@ -18276,6 +18257,27 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="U$1" gate="G$1" pin="10/CS"/>
 <wire x1="114.3" y1="83.82" x2="99.06" y2="83.82" width="0.1524" layer="91"/>
 <label x="86.36" y="83.82" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="LED_2" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="5"/>
+<wire x1="114.3" y1="96.52" x2="99.06" y2="96.52" width="0.1524" layer="91"/>
+<label x="91.44" y="96.52" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SC_D0" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="2"/>
+<wire x1="114.3" y1="104.14" x2="99.06" y2="104.14" width="0.1524" layer="91"/>
+<label x="91.44" y="104.14" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="T_0" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="17/A3/TX4"/>
+<wire x1="154.94" y1="88.9" x2="170.18" y2="88.9" width="0.1524" layer="91"/>
+<label x="170.18" y="88.9" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -18363,6 +18365,13 @@ Team 5 (Stumpp, Corcoran)
 <instance part="+3V11" gate="G$1" x="68.58" y="118.11" smashed="yes">
 <attribute name="VALUE" x="69.85" y="118.11" size="1.778" layer="96"/>
 </instance>
+<instance part="R2" gate="G$1" x="50.8" y="147.32" smashed="yes" rot="R90">
+<attribute name="NAME" x="56.9214" y="151.13" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="56.642" y="146.05" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="+3V12" gate="G$1" x="50.8" y="158.75" smashed="yes">
+<attribute name="VALUE" x="52.07" y="158.75" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -18405,6 +18414,11 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="+3V11" gate="G$1" pin="+3V3"/>
 <wire x1="63.5" y1="109.22" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="109.22" x2="68.58" y2="115.57" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="+3V12" gate="G$1" pin="+3V3"/>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="50.8" y1="156.21" x2="50.8" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -18531,6 +18545,13 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="U3" gate="G$1" pin="!HOLD"/>
 <wire x1="218.44" y1="106.68" x2="226.06" y2="106.68" width="0.1524" layer="91"/>
 <label x="226.06" y="106.68" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="HOLD_PUP2" class="0">
+<segment>
+<pinref part="R2" gate="G$1" pin="1"/>
+<wire x1="50.8" y1="142.24" x2="50.8" y2="137.16" width="0.1524" layer="91"/>
+<label x="45.72" y="134.62" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
