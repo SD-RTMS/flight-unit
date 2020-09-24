@@ -17,7 +17,7 @@
 #include "space_computer.hpp"
 
 #define INIT_ATTEMPTS 3
-#define SAMP_DELAY    5
+#define SAMP_DELAY 5000
 
 IMU Imu;
 memory_if memIf;
@@ -29,7 +29,7 @@ space_computer spaceComp;
  * @brief Setup function run on startup
  * 
  */
-void setup() 
+void setup()
 {
   uint8_t cnt = 1;
   while (!Imu.init() && cnt <= INIT_ATTEMPTS)
@@ -65,31 +65,46 @@ void setup()
     delayMicroseconds(100);
     cnt++;
   }
-
 }
 
 /**
  * @brief main program loop
  * 
  */
-void loop() {
-  // Dummy function to begin polling functions and sending data
-  Data *packet = new Data;
+void loop()
+{
+  
+  while (1)
+  {
+    // Dummy loop to begin polling functions and sending data
+    Data *packet = new Data;
 
-  Serial.println("Reading IMU...");
-  Imu.read(packet);
-  Serial.println("Reading digital I/O bank...");
-  digitalIo.read(packet);
-  Serial.println("Reading analog I/O bank...");
-  analogIo.read(packet);
-  Serial.println("Reading Space Computer interface..");
-  spaceComp.read(packet,1);
-  Serial.println("Writing to memory...");
-  memIf.write(*packet);
+    Serial.println("Reading IMU...");
+    Imu.read(packet);
+    Serial.println("Reading digital I/O bank...");
+    digitalIo.read(packet);
+    Serial.println("Reading analog I/O bank...");
+    analogIo.read(packet);
+    Serial.println("Reading Space Computer interface..");
+    spaceComp.read(packet, 1);
+    Serial.println("Writing to memory...");
+    memIf.write(*packet);
 
-  delay(1);
-  while (!Serial.available()){}
-  Serial.println("Reading Memory interface...");
+    Serial.printf("V0: %.3f\n", packet->analogData.v0);
+    Serial.printf("V1: %.3f\n", packet->analogData.v1);
+    Serial.printf("T0: %.3f\n", packet->analogData.temp0);
+    Serial.printf("T1: %.3f\n", packet->analogData.temp1);
+    Serial.printf("A0: %.3f\n", packet->analogData.a0);
+    Serial.printf("A1: %.3f\n", packet->analogData.a1);
+    Serial.printf("A2: %.3f\n", packet->analogData.a2);
+    Serial.printf("A3: %.3f\n", packet->analogData.a3);
 
-  delay(SAMP_DELAY);
+    delay(100);
+    while (!Serial.availableForWrite())
+    {
+    }
+    Serial.println("Reading Memory interface...");
+
+    delay(SAMP_DELAY);
+  }
 }

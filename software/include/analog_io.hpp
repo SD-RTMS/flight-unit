@@ -27,6 +27,7 @@ private:
     const int BETA = 2900; //TODO: get exact value
     const int ADC_PREC = 12;
     const float VREF = 3.3;
+    int MAX_ADC_VAL;
 
     /**
      * @brief converts analog reading to temperature
