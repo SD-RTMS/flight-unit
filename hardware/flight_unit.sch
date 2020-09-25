@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="mil" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -17618,13 +17618,10 @@ Sew hole
 <part name="X2" library="con-jst" library_urn="urn:adsk.eagle:library:156" deviceset="?4B-ZR" device="S" package3d_urn="urn:adsk.eagle:package:7641/1"/>
 <part name="GND9" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="GND10" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
-<part name="C3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="C-US" device="025-040X050" package3d_urn="urn:adsk.eagle:package:6240321/1" value="10uF"/>
 <part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND11" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
-<part name="C4" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="C-US" device="025-040X050" package3d_urn="urn:adsk.eagle:package:6240321/1" value="10uF"/>
 <part name="+3V9" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND12" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
-<part name="C5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="C-US" device="025-040X050" package3d_urn="urn:adsk.eagle:package:6240321/1" value="10uF"/>
 <part name="+3V10" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND13" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="J1" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" deviceset="CONN_20X2" device="SHROUDED" package3d_urn="urn:adsk.eagle:package:38279/1"/>
@@ -17637,6 +17634,9 @@ Sew hole
 <part name="GND15" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="R2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R1210" package3d_urn="urn:adsk.eagle:package:23554/2" value="1k"/>
 <part name="+3V12" library="supply1" deviceset="+3V3" device=""/>
+<part name="C3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="C-US" device="C0805K" package3d_urn="urn:adsk.eagle:package:6240397/1" value="10 uF"/>
+<part name="C4" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="C-US" device="C0805K" package3d_urn="urn:adsk.eagle:package:6240397/1" value="10uF"/>
+<part name="C5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="C-US" device="C0805K" package3d_urn="urn:adsk.eagle:package:6240397/1" value="10uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -17805,13 +17805,12 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="D2" gate="1" pin="C"/>
 <wire x1="129.54" y1="110.49" x2="121.92" y2="110.49" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="102.87" x2="129.54" y2="110.49" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="110.49" x2="137.16" y2="110.49" width="0.1524" layer="91"/>
-<junction x="129.54" y="110.49"/>
-<pinref part="IC2" gate="A1" pin="VI"/>
 <pinref part="C2" gate="G$1" pin="1"/>
+<pinref part="IC2" gate="A1" pin="VI"/>
+<wire x1="137.16" y1="110.49" x2="134.62" y2="110.49" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="110.49" x2="129.54" y2="110.49" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="106.68" x2="134.62" y2="110.49" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="110.49" x2="137.16" y2="110.49" width="0.1524" layer="91"/>
-<junction x="137.16" y="110.49"/>
+<junction x="134.62" y="110.49"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -17858,11 +17857,6 @@ Team 5 (Stumpp, Corcoran)
 <wire x1="215.9" y1="109.22" x2="215.9" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="H2" gate="G$1" pin="P$1"/>
 <wire x1="215.9" y1="96.52" x2="218.44" y2="96.52" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$9" class="0">
-<segment>
-<junction x="134.62" y="110.49"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -18325,29 +18319,17 @@ Team 5 (Stumpp, Corcoran)
 <instance part="GND8" gate="1" x="43.18" y="93.98" smashed="yes">
 <attribute name="VALUE" x="43.18" y="93.726" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="C3" gate="G$1" x="55.88" y="74.93" smashed="yes">
-<attribute name="NAME" x="49.276" y="75.565" size="1.778" layer="95"/>
-<attribute name="VALUE" x="56.896" y="70.739" size="1.778" layer="96" align="center-left"/>
+<instance part="+3V7" gate="G$1" x="58.42" y="85.09" smashed="yes">
+<attribute name="VALUE" x="59.69" y="85.09" size="1.778" layer="96"/>
 </instance>
-<instance part="+3V7" gate="G$1" x="55.88" y="85.09" smashed="yes">
-<attribute name="VALUE" x="57.15" y="85.09" size="1.778" layer="96"/>
-</instance>
-<instance part="GND11" gate="1" x="55.88" y="63.5" smashed="yes">
-<attribute name="VALUE" x="55.88" y="63.246" size="1.778" layer="96" align="top-center"/>
-</instance>
-<instance part="C4" gate="G$1" x="134.62" y="74.93" smashed="yes">
-<attribute name="NAME" x="128.016" y="75.565" size="1.778" layer="95"/>
-<attribute name="VALUE" x="135.636" y="70.739" size="1.778" layer="96" align="center-left"/>
+<instance part="GND11" gate="1" x="58.42" y="60.96" smashed="yes">
+<attribute name="VALUE" x="58.42" y="60.706" size="1.778" layer="96" align="top-center"/>
 </instance>
 <instance part="+3V9" gate="G$1" x="134.62" y="85.09" smashed="yes">
 <attribute name="VALUE" x="135.89" y="85.09" size="1.778" layer="96"/>
 </instance>
 <instance part="GND12" gate="1" x="134.62" y="63.5" smashed="yes">
 <attribute name="VALUE" x="134.62" y="63.246" size="1.778" layer="96" align="top-center"/>
-</instance>
-<instance part="C5" gate="G$1" x="210.82" y="74.93" smashed="yes">
-<attribute name="NAME" x="204.216" y="75.565" size="1.778" layer="95"/>
-<attribute name="VALUE" x="211.836" y="70.739" size="1.778" layer="96" align="center-left"/>
 </instance>
 <instance part="+3V10" gate="G$1" x="210.82" y="85.09" smashed="yes">
 <attribute name="VALUE" x="212.09" y="85.09" size="1.778" layer="96"/>
@@ -18372,6 +18354,18 @@ Team 5 (Stumpp, Corcoran)
 <instance part="+3V12" gate="G$1" x="50.8" y="158.75" smashed="yes">
 <attribute name="VALUE" x="52.07" y="158.75" size="1.778" layer="96"/>
 </instance>
+<instance part="C3" gate="G$1" x="58.42" y="73.66" smashed="yes">
+<attribute name="NAME" x="59.436" y="74.295" size="1.778" layer="95"/>
+<attribute name="VALUE" x="59.436" y="69.469" size="1.778" layer="96"/>
+</instance>
+<instance part="C4" gate="G$1" x="134.62" y="73.66" smashed="yes">
+<attribute name="NAME" x="135.636" y="74.295" size="1.778" layer="95"/>
+<attribute name="VALUE" x="135.636" y="69.469" size="1.778" layer="96"/>
+</instance>
+<instance part="C5" gate="G$1" x="210.82" y="73.66" smashed="yes">
+<attribute name="NAME" x="211.836" y="74.295" size="1.778" layer="95"/>
+<attribute name="VALUE" x="211.836" y="69.469" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -18390,19 +18384,21 @@ Team 5 (Stumpp, Corcoran)
 <wire x1="142.24" y1="109.22" x2="147.32" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C3" gate="G$1" pin="1"/>
 <pinref part="+3V7" gate="G$1" pin="+3V3"/>
-<wire x1="55.88" y1="77.47" x2="55.88" y2="82.55" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="76.2" x2="58.42" y2="82.55" width="0.1524" layer="91"/>
+<pinref part="C3" gate="G$1" pin="1"/>
 </segment>
 <segment>
-<pinref part="C4" gate="G$1" pin="1"/>
 <pinref part="+3V9" gate="G$1" pin="+3V3"/>
-<wire x1="134.62" y1="77.47" x2="134.62" y2="82.55" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="77.47" x2="134.62" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="134.62" y1="76.2" x2="134.62" y2="82.55" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C5" gate="G$1" pin="1"/>
 <pinref part="+3V10" gate="G$1" pin="+3V3"/>
-<wire x1="210.82" y1="77.47" x2="210.82" y2="82.55" width="0.1524" layer="91"/>
+<wire x1="210.82" y1="77.47" x2="210.82" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="1"/>
+<wire x1="210.82" y1="76.2" x2="210.82" y2="82.55" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="+3V5" gate="G$1" pin="+3V3"/>
@@ -18438,19 +18434,19 @@ Team 5 (Stumpp, Corcoran)
 <wire x1="198.12" y1="101.6" x2="198.12" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C3" gate="G$1" pin="2"/>
 <pinref part="GND11" gate="1" pin="GND"/>
-<wire x1="55.88" y1="69.85" x2="55.88" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="68.58" x2="58.42" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="C3" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="C4" gate="G$1" pin="2"/>
 <pinref part="GND12" gate="1" pin="GND"/>
-<wire x1="134.62" y1="69.85" x2="134.62" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="2"/>
+<wire x1="134.62" y1="68.58" x2="134.62" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C5" gate="G$1" pin="2"/>
 <pinref part="GND13" gate="1" pin="GND"/>
-<wire x1="210.82" y1="69.85" x2="210.82" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="2"/>
+<wire x1="210.82" y1="68.58" x2="210.82" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MEM_SCK" class="0">
@@ -18532,11 +18528,6 @@ Team 5 (Stumpp, Corcoran)
 <label x="22.86" y="134.62" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U2" gate="G$1" pin="!HOLD"/>
-<wire x1="142.24" y1="106.68" x2="149.86" y2="106.68" width="0.1524" layer="91"/>
-<label x="149.86" y="106.68" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="U3" gate="G$1" pin="!HOLD"/>
 <wire x1="218.44" y1="106.68" x2="226.06" y2="106.68" width="0.1524" layer="91"/>
 <label x="226.06" y="106.68" size="1.778" layer="95"/>
@@ -18552,6 +18543,11 @@ Team 5 (Stumpp, Corcoran)
 <pinref part="U1" gate="G$1" pin="!HOLD"/>
 <wire x1="63.5" y1="106.68" x2="71.12" y2="106.68" width="0.1524" layer="91"/>
 <label x="71.12" y="106.68" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U2" gate="G$1" pin="!HOLD"/>
+<wire x1="142.24" y1="106.68" x2="149.86" y2="106.68" width="0.1524" layer="91"/>
+<label x="149.86" y="106.68" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -18914,6 +18910,19 @@ Team 5 (Stumpp, Corcoran)
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="106,4,154.94,106.68,NC,,,,,"/>
+<approved hash="113,1,130.071,89.431,FRAME2,,,,,"/>
+<approved hash="113,2,130.071,89.431,FRAME1,,,,,"/>
+<approved hash="113,3,130.071,89.431,FRAME3,,,,,"/>
+<approved hash="113,4,130.071,89.431,FRAME4,,,,,"/>
+<approved hash="113,5,130.071,89.431,FRAME5,,,,,"/>
+<approved hash="113,6,130.071,89.431,FRAME6,,,,,"/>
+<approved hash="113,6,40.64,107.002,LED0,,,,,"/>
+<approved hash="113,6,40.64,120.464,LED1,,,,,"/>
+<approved hash="113,6,40.64,133.164,LED2,,,,,"/>
+<approved hash="113,3,188.197,109.446,JP1,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>
