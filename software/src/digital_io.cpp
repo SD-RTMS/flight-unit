@@ -20,6 +20,7 @@ bool digital_io::init()
 
 bool digital_io::read(Data *data)
 {
+    Serial.println("Reading discrete digital i/o...");
     return true;
 }
 

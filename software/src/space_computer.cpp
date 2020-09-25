@@ -19,5 +19,6 @@ bool space_computer::init()
 
 bool space_computer::read(Data *data, uint8_t msgType)
 {
+    Serial.println("Reading from space computer...");
     return true;
 }

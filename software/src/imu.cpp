@@ -19,6 +19,7 @@ bool IMU::init()
 
 bool IMU::read(Data *data)
 {
+    Serial.println("Reading IMU data...");
     return true;
 }
 

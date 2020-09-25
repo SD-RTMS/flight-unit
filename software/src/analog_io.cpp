@@ -48,6 +48,8 @@ bool analog_io::init()
 
 bool analog_io::read(Data *data)
 {
+    Serial.println("Reading disrete analog i/o...");
+
     uint16_t v0_raw = analogRead(V_0);
     uint16_t v1_raw = analogRead(V_1);
     uint16_t t0_raw = analogRead(T_0);

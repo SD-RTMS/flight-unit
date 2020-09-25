@@ -48,6 +48,7 @@ bool memory_if::write(Data data)
 
 bool memory_if::read(Data *)
 {
+    Serial.println("Reading packet from memory...");
     return true;
 }
 
