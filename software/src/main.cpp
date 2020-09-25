@@ -17,7 +17,7 @@
 #include "space_computer.hpp"
 
 #define INIT_ATTEMPTS 3
-#define SAMP_DELAY 5000
+#define SAMP_DELAY 15000
 
 IMU Imu;
 memory_if memIf;
