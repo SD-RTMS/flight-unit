@@ -1,3 +1,6 @@
 # Eagle Ignores
 *.s#*
 *.b#*
+
+# VS Code Ignores
+.vscode
