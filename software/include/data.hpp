@@ -12,6 +12,8 @@
 #ifndef DATA_HPP
 #define DATA_HPP
 
+#include <inttypes.h>
+
 /**
  * @brief Analog I/O bank data type
  * 
@@ -20,12 +22,12 @@ typedef struct analogIoData
 {
     float temp0;
     float temp1;
-    float v0;
-    float v1;
-    float a0;
-    float a1;
-    float a2;
-    float a3;
+    uint16_t v0;
+    uint16_t v1;
+    uint16_t a0;
+    uint16_t a1;
+    uint16_t a2;
+    uint16_t a3;
 } analogIoData;
 
 /**
@@ -34,11 +36,11 @@ typedef struct analogIoData
  */
 typedef struct digitalIoData
 {
-    float d0;
-    float d1;
-    float d2;
-    float d3;
-    float d4;
+    bool d0;
+    bool d1;
+    bool d2;
+    bool d3;
+    bool d4;
 
 } digitalIoData;
 
