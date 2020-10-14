@@ -70,7 +70,8 @@ bool analog_io::read(Data *data)
     data->analogData.a0 = convert_voltage(a0_raw);
     data->analogData.a1 = convert_voltage(a1_raw);
     data->analogData.a2 = convert_voltage(a2_raw);
-    data->analogData.a3 = convert_voltage(a3_raw);    
+    data->analogData.a3 = convert_voltage(a3_raw);   
+ 
 
     return true;
 }

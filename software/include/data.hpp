@@ -12,6 +12,8 @@
 #ifndef DATA_HPP
 #define DATA_HPP
 
+#include <pb_encode.h>
+
 #include <inttypes.h>
 
 /**
