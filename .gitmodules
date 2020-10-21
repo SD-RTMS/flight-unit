@@ -1,6 +1,9 @@
 [submodule "software/lib/Adafruit_BNO055"]
 	path = software/lib/Adafruit_BNO055
 	url = https://github.com/adafruit/Adafruit_BNO055.git
-[submodule "proto"]
-	path = proto
+[submodule "software/proto"]
+	path = software/proto
 	url = https://github.com/SD-RTMS/downlink-messages
+[submodule "software/lib/nanopb"]
+	path = software/lib/nanopb
+	url = https://github.com/nanopb/nanopb
