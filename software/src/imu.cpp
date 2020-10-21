@@ -9,7 +9,7 @@
  * 
  */
 
-#include "IMU.hpp"
+#include "imu.hpp"
 
 bool IMU::init()
 {
