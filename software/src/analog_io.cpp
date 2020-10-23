@@ -16,14 +16,21 @@
 
 float analog_io::convert_temp(uint16_t raw)
 {
-    return 0.0;
+    // voltage dividers are balanced
+    float pinVoltage = VREF * (float(raw) / MAX_ADC_VAL);
+    double R = R_BANK*(VREF - pinVoltage)/pinVoltage;
+    double Temp = 1/(log(R/float(R0))/BETA + (1.0/T0)) - 273;
+   
+    return Temp;
 }
 
 float analog_io::convert_voltage(uint16_t raw)
 {
+     
     // voltage dividers are balanced
     float pinVoltage = VREF * (float(raw) / MAX_ADC_VAL);
-    return (pinVoltage * 2);
+
+    return (pinVoltage*2);
 }
 
 /* Public Methods */
@@ -61,11 +68,16 @@ bool analog_io::read(Data *data)
 
     data->analogData.v0 = convert_voltage(v0_raw);
     data->analogData.v1 = convert_voltage(v1_raw);
-    //data->analogData.temp0 = convert_temp(t0_raw);
-    //data->analogData.temp1 = convert_temp(t1_raw);
-    // just for analog tests
-    data->analogData.temp0 = convert_voltage(t0_raw);
-    data->analogData.temp1 = convert_voltage(t1_raw);
+    data->analogData.temp0 = convert_temp(t0_raw);
+    data->analogData.temp1 = convert_temp(t1_raw);
+
+
+    //Serial.print("T0 Temp: ");
+    //Serial.print(convert_temp(t0_raw));
+    //Serial.println(" C ");
+    //Serial.print("T1 Temp: ");
+    //Serial.print(convert_temp(t1_raw));
+    //Serial.println(" C ");
 
     data->analogData.a0 = convert_voltage(a0_raw);
     data->analogData.a1 = convert_voltage(a1_raw);
