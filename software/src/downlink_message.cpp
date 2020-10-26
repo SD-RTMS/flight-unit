@@ -1,6 +1,7 @@
 #include <cstring>
 #include <pb_encode.h>
 #include <pb_common.h>
+#include <iostream>
 
 #include "donwlink_message.hpp"
 #include "messages.pb.h"
@@ -25,7 +26,9 @@ DownlinkMessage::DownlinkMessage(uint8_t serializedProto[], size_t length): _dat
 DownlinkMessage::DownlinkMessage(downlink_proto_SystemMetrics& metrics) {
     // Serialize the proto into the local buffer and store its size
     pb_ostream_t stream = pb_ostream_from_buffer(&_serializedProto[0], LOCAL_BUFFER_SIZE);
-    pb_encode(&stream, downlink_proto_SystemMetrics_fields, &metrics);
+    bool status = pb_encode(&stream, downlink_proto_SystemMetrics_fields, &metrics);
+    if(!status)
+        std::cout << "serialization error\n";
     _dataLength = stream.bytes_written;
 }
 
