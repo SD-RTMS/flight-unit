@@ -72,12 +72,12 @@ bool analog_io::read(Data *data)
     data->analogData.temp1 = convert_temp(t1_raw);
 
 
-    //Serial.print("T0 Temp: ");
-    //Serial.print(convert_temp(t0_raw));
-    //Serial.println(" C ");
-    //Serial.print("T1 Temp: ");
-    //Serial.print(convert_temp(t1_raw));
-    //Serial.println(" C ");
+    Serial.print("T0 Temp: ");
+    Serial.print(convert_temp(t0_raw));
+    Serial.println(" C ");
+    Serial.print("T1 Temp: ");
+    Serial.print(convert_temp(t1_raw));
+    Serial.println(" C ");
 
     data->analogData.a0 = convert_voltage(a0_raw);
     data->analogData.a1 = convert_voltage(a1_raw);
