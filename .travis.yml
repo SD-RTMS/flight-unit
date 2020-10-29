@@ -7,6 +7,10 @@ cache:
     directories:
         - "~/.platformio"
 
+before_install:
+    - sudo apt update
+    - sudo apt install -y protobuf-compiler
+
 install:
     - pip install -U platformio
     - platformio update
