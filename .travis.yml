@@ -2,14 +2,16 @@ language: python
 python:
     - "2.7"
 
+dist: bionic
+addons:
+    apt:
+        packages:
+        - protobuf-compiler
+
 sudo: false
 cache:
     directories:
         - "~/.platformio"
-
-before_install:
-    - sudo apt update
-    - sudo apt install -y protobuf-compiler
 
 install:
     - pip install -U platformio
