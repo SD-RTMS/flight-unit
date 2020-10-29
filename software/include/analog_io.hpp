@@ -24,10 +24,14 @@ class analog_io
 {
 private:
     const uint8_t bank[5] = {SC_D0, SC_D1, SC_D2, SC_D3, SC_D4};
-    const int BETA = 2900; //TODO: get exact value
+    const int BETA = 3539; //TODO: get exact value
     const int ADC_PREC = 12;
     const float VREF = 3.3;
     int MAX_ADC_VAL;
+    const int R_BANK = 10000; //10k Resistor bank 
+    const int R0 = 2000; //Thermistor R value at 25 C
+    const int T0 = 298; 
+
 
     /**
      * @brief converts analog reading to temperature

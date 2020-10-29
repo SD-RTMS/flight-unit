@@ -31,12 +31,12 @@
 #define LED_2 7
 
 // Analog Voltages
-#define V_0 16
-#define V_1 17
+#define V_0 14
+#define V_1 16
 
 // Analog Temperatures
-#define T_0 14
-#define T_1 15
+#define T_0 15
+#define T_1 17
 
 // IIC
 #define IIC_SCL 19

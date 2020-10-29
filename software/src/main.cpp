@@ -10,7 +10,7 @@
  */
 
 #include <Arduino.h>
-#include "Imu.hpp"
+#include "imu.hpp"
 #include "analog_io.hpp"
 #include "digital_io.hpp"
 #include "memory_if.hpp"
