@@ -30,6 +30,7 @@ DownlinkMessage::DownlinkMessage(downlink_proto_SystemMetrics& metrics) {
     if(!status)
         std::cout << "serialization error\n";
     _dataLength = stream.bytes_written;
+    _checksum = _computeChecksum();
 }
 
 bool DownlinkMessage::validateChecksum() {
