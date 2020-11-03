@@ -3,7 +3,7 @@
 
 #include <Wire.h>
 #include "pins.hpp"
-#include "data.hpp"
+#include "messages.pb.h"
 
 class space_computer
 {
@@ -12,7 +12,7 @@ private:
 public:
 
     bool init();
-    bool read(Data *, uint8_t);
+    bool read(downlink_proto_SystemMetrics *data, uint8_t);
     
 };
 

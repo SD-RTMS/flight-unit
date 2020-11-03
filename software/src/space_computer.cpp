@@ -13,12 +13,18 @@
 
 bool space_computer::init()
 {
-    Serial.println("Initializing SC interface...");
+    #if DEBUG
+        Serial.println("Initializing SC interface...");
+    #endif
+    
     return true;
 }
 
-bool space_computer::read(Data *data, uint8_t msgType)
+bool space_computer::read(downlink_proto_SystemMetrics *data, uint8_t msgType)
 {
-    Serial.println("Reading from space computer...");
+    #if DEBUG
+        Serial.println("Reading from space computer...");
+    #endif
+
     return true;
 }

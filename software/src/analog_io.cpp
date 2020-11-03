@@ -37,7 +37,10 @@ float analog_io::convert_voltage(uint16_t raw)
 
 bool analog_io::init()
 {
-    Serial.println("Analog I/O bank object initialized...");
+    #if DEBUG
+        Serial.println("Analog I/O bank object initialized...");
+    #endif
+
     analogReadResolution(ADC_PREC);
     analogReference(0);
     pinMode(V_0, INPUT);
@@ -53,9 +56,11 @@ bool analog_io::init()
     return true;
 }
 
-bool analog_io::read(Data *data)
+bool analog_io::read(downlink_proto_SystemMetrics *data)
 {
-    Serial.println("Reading disrete analog i/o...");
+    #if DEBUG
+        Serial.println("Reading disrete analog i/o...");
+    #endif
 
     uint16_t v0_raw = analogRead(V_0);
     uint16_t v1_raw = analogRead(V_1);
@@ -66,23 +71,15 @@ bool analog_io::read(Data *data)
     uint16_t a2_raw = analogRead(A_2);
     uint16_t a3_raw = analogRead(A_3);
 
-    data->analogData.v0 = convert_voltage(v0_raw);
-    data->analogData.v1 = convert_voltage(v1_raw);
-    data->analogData.temp0 = convert_temp(t0_raw);
-    data->analogData.temp1 = convert_temp(t1_raw);
+    data->power_supply.level_5v0 = convert_voltage(v0_raw);
+    data->power_supply.level_3v3 = convert_voltage(v1_raw);
+    data->power_supply.temperature_v0 = convert_temp(t0_raw);
+    data->power_supply.temperature_v1 = convert_temp(t1_raw);
 
-
-    Serial.print("T0 Temp: ");
-    Serial.print(convert_temp(t0_raw));
-    Serial.println(" C ");
-    Serial.print("T1 Temp: ");
-    Serial.print(convert_temp(t1_raw));
-    Serial.println(" C ");
-
-    data->analogData.a0 = convert_voltage(a0_raw);
-    data->analogData.a1 = convert_voltage(a1_raw);
-    data->analogData.a2 = convert_voltage(a2_raw);
-    data->analogData.a3 = convert_voltage(a3_raw);    
+    data->analog.analog_0 = convert_voltage(a0_raw);
+    data->analog.analog_1 = convert_voltage(a1_raw);
+    data->analog.analog_2 = convert_voltage(a2_raw);
+    data->analog.analog_3 = convert_voltage(a3_raw);
 
     return true;
 }
