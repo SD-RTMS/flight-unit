@@ -13,7 +13,7 @@
 #define ANALOG_IO_HPP
 
 #include "pins.hpp"
-#include "data.hpp"
+#include "messages.pb.h"
 #include <inttypes.h>
 
 /**
@@ -62,7 +62,7 @@ public:
      * @return true - read is successful
      * @return false - read fails
      */
-    bool read(Data *);
+    bool read(downlink_proto_SystemMetrics *data);
 
 };
 

@@ -31,12 +31,12 @@ bool fram::init(uint8_t select)
     return true;
 }
 
-bool fram::read(Data *data)
+bool fram::read(downlink_proto_SystemMetrics *data)
 {
     return true;
 }
 
-bool fram::write(Data data)
+bool fram::write(downlink_proto_SystemMetrics data)
 {
     return true;
 }

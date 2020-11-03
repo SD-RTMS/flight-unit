@@ -4,7 +4,7 @@
 #define FRAM_HPP
 
 #include "pins.hpp"
-#include "data.hpp"
+#include "messages.pb.h"
 #include <inttypes.h>
 
 class fram
@@ -32,7 +32,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool read(Data *);
+    bool read(downlink_proto_SystemMetrics *data);
 
     /**
      * @brief writes the packet to the fram module
@@ -40,7 +40,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool write(Data);
+    bool write(downlink_proto_SystemMetrics data);
 
 };
 

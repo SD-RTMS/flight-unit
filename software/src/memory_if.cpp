@@ -13,12 +13,12 @@
 #include <Arduino.h>
 
 /****** Private Methods ******/
-uint8_t memory_if::majority_voter(Data d1, Data d2, Data d3)
+uint8_t memory_if::majority_voter(downlink_proto_SystemMetrics d1, downlink_proto_SystemMetrics d2, downlink_proto_SystemMetrics d3)
 {
     return 1;
 }
 
-bool memory_if::ecc_check(Data)
+bool memory_if::ecc_check(downlink_proto_SystemMetrics data)
 {
     return true;
 }
@@ -27,6 +27,10 @@ bool memory_if::ecc_check(Data)
 
 memory_if::memory_if()
 {
+    #if DEBUG
+        Serial.println("constructing memory interface");
+    #endif
+
     devices = new fram[3];
 }
 
@@ -37,18 +41,21 @@ memory_if::~memory_if()
 
 bool memory_if::init()
 {
-    Serial.println("Memory interface initialized...");
+    #if DEBUG
+        Serial.println("Memory interface initialized...");
+    #endif
     return true;
 }
 
-bool memory_if::write(Data data)
+bool memory_if::write(downlink_proto_SystemMetrics data)
 {
     return true;
 }
 
-bool memory_if::read(Data *)
+bool memory_if::read(downlink_proto_SystemMetrics *data)
 {
-    Serial.println("Reading packet from memory...");
+    #if DEBUG
+        Serial.println("Reading packet from memory...");
+    #endif
     return true;
 }
-

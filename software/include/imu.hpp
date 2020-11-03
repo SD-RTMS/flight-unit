@@ -4,7 +4,7 @@
 #include <Wire.h>
 #include <Adafruit_BNO055.h>
 #include "pins.hpp"
-#include "data.hpp"
+#include "messages.pb.h"
 
 class IMU
 {
@@ -16,7 +16,7 @@ private:
     // TODO: add any helper vars here
 public:
     bool init();
-    bool read(Data *);
+    bool read(downlink_proto_SystemMetrics *data);
     bool enable();
     bool disable();
 

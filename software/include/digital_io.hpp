@@ -12,9 +12,12 @@
 #ifndef DIGITAL_IO_HPP
 #define DIGITAL_IO_HPP
 
-#include "data.hpp"
+#include "messages.pb.h"
 #include "pins.hpp"
 #include <inttypes.h>
+
+#define NUM_DIGITAL_IO 5
+#define NUM_LEDS 3
 
 /**
  * @brief LED signal codes
@@ -35,8 +38,7 @@ typedef enum ledCode
 class digital_io
 {
 private:
-    const uint8_t bank[5] = {SC_D0, SC_D1, SC_D2, SC_D3, SC_D4};
-    const uint8_t leds[3] = {LED_0, LED_1, LED_2}; 
+   
 public:
     /**
      * @brief initializes the digital i/o bank
@@ -52,7 +54,7 @@ public:
      * @return true - read is successful
      * @return false - read fails
      */
-    bool read(Data *);
+    bool read(downlink_proto_SystemMetrics *data);
 
     /**
      * @brief writes an led pattern code to the digital pin specified

@@ -13,22 +13,38 @@
 
 bool IMU::init()
 {
-    Serial.println("Initializing IMU...");
+    #if DEBUG
+        Serial.println("Initializing IMU...");
+    #endif 
+
+    // TODO: initialize imu here
+
     return true;
 }
 
-bool IMU::read(Data *data)
+bool IMU::read(downlink_proto_SystemMetrics *data)
 {
-    Serial.println("Reading IMU data...");
+    #if DEBUG
+        Serial.println("Reading IMU data...");
+    #endif
+
     return true;
 }
 
 bool IMU::enable()
 {
+    #if DEBUG
+        Serial.println("Enabling IMU ...");
+    #endif
+
     return true;
 }
 
 bool IMU::disable()
 {
+    #if DEBUG
+        Serial.println("Disabling IMU...");
+    #endif
+
     return true;
 }

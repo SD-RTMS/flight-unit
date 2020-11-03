@@ -10,11 +10,19 @@
  */
 
 #include <Arduino.h>
+#include "messages.pb.h"
 #include "imu.hpp"
 #include "analog_io.hpp"
 #include "digital_io.hpp"
 #include "memory_if.hpp"
 #include "space_computer.hpp"
+
+// TODO: come up with a less hacky fix for this
+extern "C"
+{
+  int __exidx_start() { return -1; }
+  int __exidx_end() { return -1; }
+}
 
 #define INIT_ATTEMPTS 3
 #define SAMP_DELAY 5000
@@ -66,7 +74,7 @@ void setup()
     delayMicroseconds(100);
     cnt++;
   }
-}
+}//*/
 
 /**
  * @brief main program loop
@@ -74,8 +82,10 @@ void setup()
  */
 void loop()
 {
-  Serial.println("Initialization done, entering main loop...\n");
-  Data *packet = new Data;
+  #if DEBUG
+    Serial.println("Initialization done, entering main loop...\n");
+  #endif
+  downlink_proto_SystemMetrics *packet = new downlink_proto_SystemMetrics;
 
   // sensor polling loop
   while (1)
@@ -91,12 +101,3 @@ void loop()
     delay(SAMP_DELAY);
   }
 }
-
-/* Serial.printf("V0: %.3f\n", packet->analogData.v0);
-Serial.printf("V1: %.3f\n", packet->analogData.v1);
-Serial.printf("T0: %.3f\n", packet->analogData.temp0);
-Serial.printf("T1: %.3f\n", packet->analogData.temp1);
-Serial.printf("A0: %.3f\n", packet->analogData.a0);
-Serial.printf("A1: %.3f\n", packet->analogData.a1);
-Serial.printf("A2: %.3f\n", packet->analogData.a2);
-Serial.printf("A3: %.3f\n", packet->analogData.a3); */
