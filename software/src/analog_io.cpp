@@ -56,7 +56,7 @@ bool analog_io::init()
     return true;
 }
 
-bool analog_io::read(downlink_proto_SystemMetrics *data)
+downlink_proto_SystemMetrics analog_io::read(downlink_proto_SystemMetrics data)
 {
     #if DEBUG
         Serial.println("Reading disrete analog i/o...");
@@ -71,15 +71,15 @@ bool analog_io::read(downlink_proto_SystemMetrics *data)
     uint16_t a2_raw = analogRead(A_2);
     uint16_t a3_raw = analogRead(A_3);
 
-    data->power_supply.level_5v0 = convert_voltage(v0_raw);
-    data->power_supply.level_3v3 = convert_voltage(v1_raw);
-    data->power_supply.temperature_v0 = convert_temp(t0_raw);
-    data->power_supply.temperature_v1 = convert_temp(t1_raw);
+    data.power_supply.level_5v0 = convert_voltage(v0_raw);
+    data.power_supply.level_3v3 = convert_voltage(v1_raw);
+    data.power_supply.temperature_v0 = convert_temp(t0_raw);
+    data.power_supply.temperature_v1 = convert_temp(t1_raw);
 
-    data->analog.analog_0 = convert_voltage(a0_raw);
-    data->analog.analog_1 = convert_voltage(a1_raw);
-    data->analog.analog_2 = convert_voltage(a2_raw);
-    data->analog.analog_3 = convert_voltage(a3_raw);
+    data.analog.analog_0 = convert_voltage(a0_raw);
+    data.analog.analog_1 = convert_voltage(a1_raw);
+    data.analog.analog_2 = convert_voltage(a2_raw);
+    data.analog.analog_3 = convert_voltage(a3_raw);
 
-    return true;
+    return data;
 }

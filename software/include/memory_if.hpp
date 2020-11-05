@@ -19,7 +19,7 @@ public:
     ~memory_if();
 
     bool init();
-    bool read(downlink_proto_SystemMetrics *data);
+    downlink_proto_SystemMetrics read(downlink_proto_SystemMetrics data);
     bool write(downlink_proto_SystemMetrics data);
 
 };

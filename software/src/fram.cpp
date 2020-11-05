@@ -31,9 +31,9 @@ bool fram::init(uint8_t select)
     return true;
 }
 
-bool fram::read(downlink_proto_SystemMetrics *data)
+downlink_proto_SystemMetrics fram::read(downlink_proto_SystemMetrics data)
 {
-    return true;
+    return data;
 }
 
 bool fram::write(downlink_proto_SystemMetrics data)

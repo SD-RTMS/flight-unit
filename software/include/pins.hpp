@@ -12,6 +12,8 @@
 #ifndef PINS_HPP
 #define PINS_HPP
 
+#define DEBUG true
+
 // Discrete Digital
 #define SC_D0 0
 #define SC_D1 1

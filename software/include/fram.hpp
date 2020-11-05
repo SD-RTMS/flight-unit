@@ -32,7 +32,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool read(downlink_proto_SystemMetrics *data);
+    downlink_proto_SystemMetrics read(downlink_proto_SystemMetrics data);
 
     /**
      * @brief writes the packet to the fram module

@@ -52,10 +52,10 @@ bool memory_if::write(downlink_proto_SystemMetrics data)
     return true;
 }
 
-bool memory_if::read(downlink_proto_SystemMetrics *data)
+downlink_proto_SystemMetrics memory_if::read(downlink_proto_SystemMetrics data)
 {
     #if DEBUG
         Serial.println("Reading packet from memory...");
     #endif
-    return true;
+    return data;
 }

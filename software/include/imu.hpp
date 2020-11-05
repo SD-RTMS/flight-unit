@@ -10,13 +10,17 @@ class IMU
 {
 private:
     Adafruit_BNO055 device;
-    sensors_event_t event;
-    bool debug;
-    
+    sensors_event_t  event;
+    imu::Quaternion quat;
+    imu::Vector<3> magnet;
+    bool enabled;
+
     // TODO: add any helper vars here
 public:
+    IMU();
+    ~IMU();
     bool init();
-    bool read(downlink_proto_SystemMetrics *data);
+    downlink_proto_SystemMetrics read(downlink_proto_SystemMetrics data);
     bool enable();
     bool disable();
 

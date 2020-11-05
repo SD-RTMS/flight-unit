@@ -62,8 +62,7 @@ public:
      * @return true - read is successful
      * @return false - read fails
      */
-    bool read(downlink_proto_SystemMetrics *data);
-
+    downlink_proto_SystemMetrics read(downlink_proto_SystemMetrics data);
 };
 
 #endif // ANALOG_IO_HPP

@@ -9,7 +9,7 @@
  * 
  */
 
-#include <Arduino.h>
+#include "Arduino.h"
 #include "messages.pb.h"
 #include "imu.hpp"
 #include "analog_io.hpp"
@@ -18,6 +18,7 @@
 #include "space_computer.hpp"
 
 // TODO: come up with a less hacky fix for this
+
 extern "C"
 {
   int __exidx_start() { return -1; }
@@ -25,13 +26,16 @@ extern "C"
 }
 
 #define INIT_ATTEMPTS 3
-#define SAMP_DELAY 5000
+#define SAMP_DELAY 1000
+#define DEBUG true
 
 IMU Imu;
 memory_if memIf;
 analog_io analogIo;
 digital_io digitalIo;
 space_computer spaceComp;
+
+downlink_proto_SystemMetrics packet;
 
 /**
  * @brief Setup function run on startup
@@ -40,20 +44,28 @@ space_computer spaceComp;
 void setup()
 {
   
+  Serial.begin(115200);
+  #if DEBUG
+    while (!Serial)
+      delay(10);
+    Serial.println("Starting up");
+  #endif
+  
   uint8_t cnt = 1;
   while (!Imu.init() && cnt <= INIT_ATTEMPTS)
   {
+    Serial.println("IMU DID NOT INIT");
     delayMicroseconds(100);
     cnt++;
   }
-
+  
   cnt = 1;
   while (!memIf.init() && cnt <= INIT_ATTEMPTS)
   {
     delayMicroseconds(100);
     cnt++;
   }
-
+  
   cnt = 1;
   while (!analogIo.init() && cnt <= INIT_ATTEMPTS)
   {
@@ -74,6 +86,7 @@ void setup()
     delayMicroseconds(100);
     cnt++;
   }
+  
 }//*/
 
 /**
@@ -81,23 +94,24 @@ void setup()
  * 
  */
 void loop()
-{
-  #if DEBUG
-    Serial.println("Initialization done, entering main loop...\n");
-  #endif
-  downlink_proto_SystemMetrics *packet = new downlink_proto_SystemMetrics;
+{    
+    packet = Imu.read(packet);
+    packet = digitalIo.read(packet);
+    packet = analogIo.read(packet);
+    packet = spaceComp.read(packet, 1);
+    //memIf.write(*packet);
+    //memIf.read(packet);
 
-  // sensor polling loop
-  while (1)
-  {
-    Imu.read(packet);
-    digitalIo.read(packet);
-    analogIo.read(packet);
-    spaceComp.read(packet, 1);
-    memIf.write(*packet);
-    memIf.read(packet);
-
-    Serial.println("\n");
+    Serial.println("Euler Vectors");
+    Serial.print("X: ");
+    Serial.print(packet.imu.euler_x);
+    Serial.print("\tY: ");
+    Serial.print(packet.imu.euler_y);
+    Serial.print("\tZ: ");
+    Serial.println(packet.imu.euler_z);
+    Serial.println("");
+    Serial.println(packet.imu.temperature);
+    
     delay(SAMP_DELAY);
-  }
+
 }

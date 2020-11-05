@@ -20,11 +20,11 @@ bool space_computer::init()
     return true;
 }
 
-bool space_computer::read(downlink_proto_SystemMetrics *data, uint8_t msgType)
+downlink_proto_SystemMetrics space_computer::read(downlink_proto_SystemMetrics data, uint8_t msgType)
 {
     #if DEBUG
         Serial.println("Reading from space computer...");
     #endif
 
-    return true;
+    return data;
 }

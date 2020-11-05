@@ -54,7 +54,7 @@ public:
      * @return true - read is successful
      * @return false - read fails
      */
-    bool read(downlink_proto_SystemMetrics *data);
+    downlink_proto_SystemMetrics read(downlink_proto_SystemMetrics data);
 
     /**
      * @brief writes an led pattern code to the digital pin specified

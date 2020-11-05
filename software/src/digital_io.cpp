@@ -33,19 +33,19 @@ bool digital_io::init()
     return true;
 }
 
-bool digital_io::read(downlink_proto_SystemMetrics *data)
+downlink_proto_SystemMetrics digital_io::read(downlink_proto_SystemMetrics data)
 {
     #if DEBUG
         Serial.println("Reading discrete digital i/o...");
     #endif
 
-    data->digital.digital_0 = digitalRead(SC_D0);
-    data->digital.digital_1 = digitalRead(SC_D1);
-    data->digital.digital_2 = digitalRead(SC_D2);
-    data->digital.digital_3 = digitalRead(SC_D3);
-    data->digital.digital_4 = digitalRead(SC_D4);
+    data.digital.digital_0 = digitalRead(SC_D0);
+    data.digital.digital_1 = digitalRead(SC_D1);
+    data.digital.digital_2 = digitalRead(SC_D2);
+    data.digital.digital_3 = digitalRead(SC_D3);
+    data.digital.digital_4 = digitalRead(SC_D4);
 
-    return true;
+    return data;
 }
 
 bool digital_io::write_led(uint8_t led, ledCode code)

@@ -12,8 +12,7 @@ private:
 public:
 
     bool init();
-    bool read(downlink_proto_SystemMetrics *data, uint8_t);
-    
+    downlink_proto_SystemMetrics read(downlink_proto_SystemMetrics data, uint8_t);
 };
 
 #endif // SPACE_COMPUTER_HPP
