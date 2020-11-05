@@ -16,9 +16,9 @@
 #include "digital_io.hpp"
 #include "memory_if.hpp"
 #include "space_computer.hpp"
+#include "donwlink_message.hpp"
 
 // TODO: come up with a less hacky fix for this
-
 extern "C"
 {
   int __exidx_start() { return -1; }
@@ -99,18 +99,8 @@ void loop()
     packet = digitalIo.read(packet);
     packet = analogIo.read(packet);
     packet = spaceComp.read(packet, 1);
-    //memIf.write(*packet);
-    //memIf.read(packet);
-
-    Serial.println("Euler Vectors");
-    Serial.print("X: ");
-    Serial.print(packet.imu.euler_x);
-    Serial.print("\tY: ");
-    Serial.print(packet.imu.euler_y);
-    Serial.print("\tZ: ");
-    Serial.println(packet.imu.euler_z);
-    Serial.println("");
-    Serial.println(packet.imu.temperature);
+    memIf.write(packet);
+    DownlinkMessage msg = memIf.read();
     
     delay(SAMP_DELAY);
 

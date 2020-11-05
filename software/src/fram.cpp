@@ -24,19 +24,76 @@ uint8_t fram::read_byte()
 }
 
 /***** Public Methods *****/
-
-bool fram::init(uint8_t select)
+fram::fram()
 {
-    cs = select;
-    return true;
 }
 
-downlink_proto_SystemMetrics fram::read(downlink_proto_SystemMetrics data)
+fram::fram(uint8_t CS)
 {
-    return data;
+    device = Adafruit_FRAM_SPI(CS);
+    next_write_addr = 0;
+    next_read_addr = 0; 
+    last_packet_len = 0;
+}
+
+bool fram::init()
+{
+    return device.begin(3);
+}
+
+DownlinkMessage fram::read()
+{
+    if (last_packet_len <= 0 || next_read_addr < 0)
+    {
+        #if DEBUG
+            Serial.println("no valid packet in memory");
+        #endif
+        downlink_proto_SystemMetrics temp;
+        DownlinkMessage msg = DownlinkMessage(temp);
+        return msg;
+    }
+    uint8_t rawPacket[last_packet_len];
+
+    for (uint16_t offset = 0; offset < last_packet_len; ++offset)
+    {
+        rawPacket[offset] = device.read8(uint32_t(next_read_addr) + uint32_t(offset));
+    }
+    
+    next_write_addr = next_read_addr;
+    next_read_addr -= last_packet_len;
+    
+    DownlinkMessage msg = DownlinkMessage(rawPacket);
+    return msg;
 }
 
 bool fram::write(downlink_proto_SystemMetrics data)
 {
-    return true;
+    #if DEBUG
+        Serial.println("writing in fram class");
+    #endif
+
+    DownlinkMessage msg = DownlinkMessage(data);
+    uint16_t packet_length = msg.packetLength();
+    uint8_t *packet = new uint8_t[packet_length];
+
+    if (msg.data(packet,packet_length))
+    {
+        for (uint16_t offset = 0; offset < packet_length; ++offset)
+        {
+            device.writeEnable(true);
+            device.write8(uint32_t(next_write_addr + offset), packet[offset]);
+            device.writeEnable(false);
+        }
+        next_read_addr = next_write_addr;
+        next_write_addr += packet_length;
+        last_packet_len = packet_length;
+        
+        delete [] packet;
+        return true;
+    }
+    else
+    {
+        delete[] packet;
+        return false;
+    }
 }

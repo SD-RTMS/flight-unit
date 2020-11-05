@@ -7,11 +7,10 @@
 class memory_if
 {
 private:
-    fram *devices; 
+    fram device1, device2, device3;
     bool debug;
-    unsigned long int *err_cnt;
-
-    uint8_t majority_voter(downlink_proto_SystemMetrics d1, downlink_proto_SystemMetrics d2, downlink_proto_SystemMetrics d3);
+    
+    DownlinkMessage majority_voter(DownlinkMessage d1, DownlinkMessage d2, DownlinkMessage d3);
     bool ecc_check(downlink_proto_SystemMetrics data);
 
 public:
@@ -19,7 +18,9 @@ public:
     ~memory_if();
 
     bool init();
-    downlink_proto_SystemMetrics read(downlink_proto_SystemMetrics data);
+
+    DownlinkMessage read();
+    
     bool write(downlink_proto_SystemMetrics data);
 
 };
