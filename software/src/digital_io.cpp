@@ -45,6 +45,8 @@ downlink_proto_SystemMetrics digital_io::read(downlink_proto_SystemMetrics data)
     data.digital.digital_3 = digitalRead(SC_D3);
     data.digital.digital_4 = digitalRead(SC_D4);
 
+    data.has_digital = true;
+
     return data;
 }
 

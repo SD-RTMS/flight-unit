@@ -81,5 +81,7 @@ downlink_proto_SystemMetrics analog_io::read(downlink_proto_SystemMetrics data)
     data.analog.analog_2 = convert_voltage(a2_raw);
     data.analog.analog_3 = convert_voltage(a3_raw);
 
+    data.has_analog = true;
+
     return data;
 }

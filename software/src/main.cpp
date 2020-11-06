@@ -36,12 +36,14 @@ digital_io digitalIo;
 space_computer spaceComp;
 
 downlink_proto_SystemMetrics packet;
+DownlinkMessage msg;
 
-/**
+    /**
  * @brief Setup function run on startup
  * 
  */
-void setup()
+    void
+    setup()
 {
   
   Serial.begin(115200);
@@ -100,8 +102,7 @@ void loop()
     packet = analogIo.read(packet);
     packet = spaceComp.read(packet, 1);
     memIf.write(packet);
-    DownlinkMessage msg = memIf.read();
+    msg = memIf.read();
     
     delay(SAMP_DELAY);
-
 }
