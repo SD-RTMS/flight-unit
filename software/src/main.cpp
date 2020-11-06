@@ -17,19 +17,16 @@
 #include "memory_if.hpp"
 #include "space_computer.hpp"
 #include "donwlink_message.hpp"
+#include "pins.hpp"
 
 #define INIT_ATTEMPTS 3
-#define SAMP_DELAY 1000
-#define DEBUG true
+#define SAMP_DELAY 100
 
 IMU Imu;
 memory_if memIf;
 analog_io analogIo;
 digital_io digitalIo;
 space_computer spaceComp;
-
-downlink_proto_SystemMetrics packet;
-DownlinkMessage msg;
 
     /**
  * @brief Setup function run on startup
@@ -89,13 +86,33 @@ DownlinkMessage msg;
  * 
  */
 void loop()
-{    
+{
+  downlink_proto_SystemMetrics packet;
+  DownlinkMessage msg;
+  bool valid;
+
+  while (1)
+  {
     packet = Imu.read(packet);
     packet = digitalIo.read(packet);
     packet = analogIo.read(packet);
     packet = spaceComp.read(packet, 1);
-    memIf.write(packet);
-    msg = memIf.read();
-    
+
+    // send or store packet
+    if (Serial)
+    {
+      msg = DownlinkMessage(packet);
+      uint16_t packet_length = msg.packetLength();
+      uint8_t *packet = new uint8_t[packet_length];
+      msg.packet(packet, packet_length);
+      Serial.write(packet, packet_length);
+      delete[] packet;
+    }
+    else
+    {
+      memIf.write(packet);
+    }
+
     delay(SAMP_DELAY);
+  }
 }

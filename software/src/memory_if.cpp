@@ -13,10 +13,47 @@
 #include <Arduino.h>
 
 /****** Private Methods ******/
-DownlinkMessage memory_if::majority_voter(DownlinkMessage d1, DownlinkMessage d2, DownlinkMessage d3)
+bool memory_if::majority_voter(DownlinkMessage &cor, DownlinkMessage d1, DownlinkMessage d2, DownlinkMessage d3)
 {
     bool chk1 = d1.validateChecksum();
-    return d1;
+    bool chk2 = d2.validateChecksum();
+    bool chk3 = d3.validateChecksum();
+    bool match12 = ((d1.checksum()) == d2.checksum());
+    bool match13 = ((d1.checksum()) == d3.checksum());
+    bool match23 = ((d2.checksum()) == d3.checksum());
+    bool allMatch = (match12 && match13 && match23);
+    bool allChk = (chk1 && chk2 && chk3);
+
+    if (allChk && allMatch)
+    { 
+      cor = d1;
+      return true;
+    }
+    else
+    {
+        if (chk1 && chk2 && match12)
+        {
+            cor = d1;
+            return true;
+        }
+        else if (chk1 && chk3 && match13)
+        {
+            cor = d1;
+            return true;
+        }
+        else if (chk2 && chk3 && match23)
+        {
+            cor = d2;
+            return true;
+        }
+        else
+        {
+            #if DEBUG
+                Serial.println("Unrecoverable Error in packet");
+            #endif
+            return false;
+        }
+    }
 }
 
 bool memory_if::ecc_check(downlink_proto_SystemMetrics data)
@@ -80,7 +117,7 @@ bool memory_if::write(downlink_proto_SystemMetrics data)
 
 }
 
-DownlinkMessage memory_if::read()
+bool memory_if::read(DownlinkMessage &returnMsg)
 {
     #if DEBUG
         Serial.println("Reading packet from memory...");
@@ -91,8 +128,16 @@ DownlinkMessage memory_if::read()
     DownlinkMessage msg2 = device2.read();
     DownlinkMessage msg3 = device3.read();
 
-
     // select majority packet
-    //DownlinkMessage correctMsg = majority_voter(msg1, msg2, msg3);
-    return msg1;
+    DownlinkMessage correctMsg;
+    bool valid = majority_voter(correctMsg, msg1, msg2, msg3);
+    if (valid)
+    {
+        returnMsg = correctMsg;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
