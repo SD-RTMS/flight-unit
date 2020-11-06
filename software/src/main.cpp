@@ -18,13 +18,6 @@
 #include "space_computer.hpp"
 #include "donwlink_message.hpp"
 
-// TODO: come up with a less hacky fix for this
-extern "C"
-{
-  int __exidx_start() { return -1; }
-  int __exidx_end() { return -1; }
-}
-
 #define INIT_ATTEMPTS 3
 #define SAMP_DELAY 1000
 #define DEBUG true
