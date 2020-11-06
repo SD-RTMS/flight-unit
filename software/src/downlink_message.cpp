@@ -1,10 +1,15 @@
-#include <cstring>
+//#include <cstring>
 #include <pb_encode.h>
 #include <pb_common.h>
-#include <iostream>
+//#include <iostream>
 
 #include "donwlink_message.hpp"
+#include "Arduino.h"
 #include "messages.pb.h"
+
+DownlinkMessage::DownlinkMessage()
+{
+}
 
 DownlinkMessage::DownlinkMessage(uint8_t rawPacket[]) {
     uint8_t* cur = &rawPacket[0];
@@ -15,11 +20,11 @@ DownlinkMessage::DownlinkMessage(uint8_t rawPacket[]) {
     _dataLength = *(reinterpret_cast<uint16_t*>(cur));
     cur += PACKET_DATALEN_LENGTH_BYTES;
     // Copy data to local buffer
-    std::memcpy(&_serializedProto[0], cur, _dataLength);
+    memcpy(&_serializedProto[0], cur, _dataLength);
 }
 
 DownlinkMessage::DownlinkMessage(uint8_t serializedProto[], size_t length): _dataLength(length) {
-    std::memcpy(&_serializedProto[0], &serializedProto[0], _dataLength);
+    memcpy(&_serializedProto[0], &serializedProto[0], _dataLength);
     _checksum = _computeChecksum();
 }
 
@@ -28,10 +33,13 @@ DownlinkMessage::DownlinkMessage(downlink_proto_SystemMetrics& metrics) {
     pb_ostream_t stream = pb_ostream_from_buffer(&_serializedProto[0], LOCAL_BUFFER_SIZE);
     bool status = pb_encode(&stream, downlink_proto_SystemMetrics_fields, &metrics);
     if(!status)
-        std::cout << "serialization error\n";
+    {
+        //std::cout << "serialization error\n";
+    }
     _dataLength = stream.bytes_written;
     _checksum = _computeChecksum();
 }
+
 
 bool DownlinkMessage::validateChecksum() {
     return _checksum == _computeChecksum();
@@ -68,7 +76,7 @@ bool DownlinkMessage::data(uint8_t* out, size_t bufferSize) {
         return false;
 
     // Copy localbuffer into `out`
-    std::memcpy(out, &_serializedProto[0], _dataLength);
+    memcpy(out, &_serializedProto[0], _dataLength);
 
     return true;
 }

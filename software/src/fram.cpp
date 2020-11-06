@@ -52,6 +52,7 @@ DownlinkMessage fram::read()
         DownlinkMessage msg = DownlinkMessage(temp);
         return msg;
     }
+
     uint8_t rawPacket[last_packet_len];
 
     for (uint16_t offset = 0; offset < last_packet_len; ++offset)
@@ -62,7 +63,7 @@ DownlinkMessage fram::read()
     next_write_addr = next_read_addr;
     next_read_addr -= last_packet_len;
     
-    DownlinkMessage msg = DownlinkMessage(rawPacket);
+    DownlinkMessage msg(rawPacket);
     return msg;
 }
 
@@ -76,7 +77,7 @@ bool fram::write(downlink_proto_SystemMetrics data)
     uint16_t packet_length = msg.packetLength();
     uint8_t *packet = new uint8_t[packet_length];
 
-    if (msg.data(packet,packet_length))
+    if (msg.packet(packet,packet_length))
     {
         for (uint16_t offset = 0; offset < packet_length; ++offset)
         {

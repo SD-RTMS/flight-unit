@@ -1,7 +1,7 @@
 #pragma once
 
 #include <inttypes.h>
-#include <array>
+//#include <array>
 
 #include "messages.pb.h"
 
@@ -13,6 +13,8 @@
 // Convenience class for encapsulation of downlink message data
 class DownlinkMessage {
 public:
+    explicit DownlinkMessage();
+
     // Construct message from a raw packet of chksum-len-data format, provided from FRAM
     explicit DownlinkMessage(uint8_t rawPacket[]);
 
@@ -23,6 +25,9 @@ public:
     // Construct message from a non-serialized proto
     // Will serialize and calculate message params
     explicit DownlinkMessage(downlink_proto_SystemMetrics& metrics);
+
+    // Copy constructor to allow assignment
+    //explicit DownlinkMessage(const DownlinkMessage &msg);
 
     // Verifies checksum is correct given data
     // Useful if constructed from raw packet

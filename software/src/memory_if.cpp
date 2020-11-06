@@ -91,7 +91,8 @@ DownlinkMessage memory_if::read()
     DownlinkMessage msg2 = device2.read();
     DownlinkMessage msg3 = device3.read();
 
+
     // select majority packet
-    DownlinkMessage correctMsg = majority_voter(msg1, msg2, msg3);
-    return correctMsg;
+    //DownlinkMessage correctMsg = majority_voter(msg1, msg2, msg3);
+    return msg1;
 }

@@ -77,6 +77,8 @@ downlink_proto_SystemMetrics IMU::read(downlink_proto_SystemMetrics data)
     int8_t temp = device.getTemp();
     data.imu.temperature = temp;
 
+    data.has_imu = true;
+
     return data;
 }
 
