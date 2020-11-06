@@ -11,6 +11,8 @@
 
 #include "fram.hpp"
 
+#define ADDR_LEN_IN_BYTES 3
+
 /***** Private Methods *****/
 
 bool fram::write_byte(uint8_t byte)
@@ -38,7 +40,7 @@ fram::fram(uint8_t CS)
 
 bool fram::init()
 {
-    return device.begin(3);
+    return device.begin(ADDR_LEN_IN_BYTES);
 }
 
 DownlinkMessage fram::read()

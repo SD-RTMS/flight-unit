@@ -10,7 +10,7 @@ private:
     fram device1, device2, device3;
     bool debug;
     
-    DownlinkMessage majority_voter(DownlinkMessage d1, DownlinkMessage d2, DownlinkMessage d3);
+    bool majority_voter(DownlinkMessage &, DownlinkMessage d1, DownlinkMessage d2, DownlinkMessage d3);
     bool ecc_check(downlink_proto_SystemMetrics data);
 
 public:
@@ -19,7 +19,7 @@ public:
 
     bool init();
 
-    DownlinkMessage read();
+    bool read(DownlinkMessage &);
     
     bool write(downlink_proto_SystemMetrics data);
 
