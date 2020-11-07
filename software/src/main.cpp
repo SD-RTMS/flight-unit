@@ -10,6 +10,7 @@
  */
 
 #include "Arduino.h"
+#include "Watchdog_t4.h"
 #include "messages.pb.h"
 #include "imu.hpp"
 #include "analog_io.hpp"
@@ -19,8 +20,13 @@
 #include "donwlink_message.hpp"
 #include "pins.hpp"
 
+
 #define INIT_ATTEMPTS 3
-#define SAMP_DELAY 100
+#define SAMP_DELAY 1000
+#define WD_ALERT_MS 10000
+
+void WDOG_Setup();
+void wdog1_feed();
 
 IMU Imu;
 memory_if memIf;
@@ -28,12 +34,13 @@ analog_io analogIo;
 digital_io digitalIo;
 space_computer spaceComp;
 
+WDT_T4<WDT1> dog;
+
     /**
  * @brief Setup function run on startup
  * 
  */
-    void
-    setup()
+void setup()
 {
   
   Serial.begin(115200);
@@ -78,7 +85,13 @@ space_computer spaceComp;
     delayMicroseconds(100);
     cnt++;
   }
-  
+
+  WDT_timings_t config;
+  config.trigger = 5;
+  config.timeout = 10;
+  dog.begin(config);
+ 
+
 }//*/
 
 /**
@@ -114,5 +127,6 @@ void loop()
     }
 
     delay(SAMP_DELAY);
+    dog.feed();
   }
 }
