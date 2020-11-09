@@ -39,9 +39,9 @@ typedef struct _downlink_proto_IMUMetrics {
     float linearAccel_x;
     float linearAccel_y;
     float linearAccel_z;
-    float mag_x;
-    float mag_y;
-    float mag_z;
+    float magnitude_x;
+    float magnitude_y;
+    float magnitude_z;
     float temperature;
 } downlink_proto_IMUMetrics;
 
@@ -93,14 +93,14 @@ extern "C" {
 #define downlink_proto_AnalogMetrics_init_default {0, 0, 0, 0}
 #define downlink_proto_Timestamp_init_default    {0, 0, 0, 0, 0, 0}
 #define downlink_proto_PowerSupplyMetrics_init_default {0, 0, 0, 0}
-#define downlink_proto_IMUMetrics_init_default   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+#define downlink_proto_IMUMetrics_init_default   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 #define downlink_proto_SpaceComputerMetrics_init_default {0, 0, 0}
 #define downlink_proto_SystemMetrics_init_default {false, downlink_proto_Timestamp_init_default, 0, false, downlink_proto_PowerSupplyMetrics_init_default, false, downlink_proto_SpaceComputerMetrics_init_default, false, downlink_proto_IMUMetrics_init_default, false, downlink_proto_DigitalMetrics_init_default, false, downlink_proto_AnalogMetrics_init_default}
 #define downlink_proto_DigitalMetrics_init_zero  {0, 0, 0, 0, 0}
 #define downlink_proto_AnalogMetrics_init_zero   {0, 0, 0, 0}
 #define downlink_proto_Timestamp_init_zero       {0, 0, 0, 0, 0, 0}
 #define downlink_proto_PowerSupplyMetrics_init_zero {0, 0, 0, 0}
-#define downlink_proto_IMUMetrics_init_zero      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+#define downlink_proto_IMUMetrics_init_zero      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 #define downlink_proto_SpaceComputerMetrics_init_zero {0, 0, 0}
 #define downlink_proto_SystemMetrics_init_zero   {false, downlink_proto_Timestamp_init_zero, 0, false, downlink_proto_PowerSupplyMetrics_init_zero, false, downlink_proto_SpaceComputerMetrics_init_zero, false, downlink_proto_IMUMetrics_init_zero, false, downlink_proto_DigitalMetrics_init_zero, false, downlink_proto_AnalogMetrics_init_zero}
 
@@ -124,12 +124,12 @@ extern "C" {
 #define downlink_proto_IMUMetrics_omega_x_tag    8
 #define downlink_proto_IMUMetrics_omega_y_tag    9
 #define downlink_proto_IMUMetrics_omega_z_tag    10
-#define downlink_proto_IMUMetrics_linearAccel_x_tag    11
-#define downlink_proto_IMUMetrics_linearAccel_y_tag    12
-#define downlink_proto_IMUMetrics_linearAccel_z_tag    13
-#define downlink_proto_IMUMetrics_mag_x_tag 14
-#define downlink_proto_IMUMetrics_mag_y_tag 15
-#define downlink_proto_IMUMetrics_mag_z_tag 16
+#define downlink_proto_IMUMetrics_linearAccel_x_tag 11
+#define downlink_proto_IMUMetrics_linearAccel_y_tag 12
+#define downlink_proto_IMUMetrics_linearAccel_z_tag 13
+#define downlink_proto_IMUMetrics_magnitude_x_tag 14
+#define downlink_proto_IMUMetrics_magnitude_y_tag 15
+#define downlink_proto_IMUMetrics_magnitude_z_tag 16
 #define downlink_proto_IMUMetrics_temperature_tag 17
 #define downlink_proto_PowerSupplyMetrics_temperature_v0_tag 1
 #define downlink_proto_PowerSupplyMetrics_temperature_v1_tag 2
@@ -198,16 +198,14 @@ X(a, STATIC,   SINGULAR, FLOAT,    quat_c,            6) \
 X(a, STATIC,   SINGULAR, FLOAT,    quat_d,            7) \
 X(a, STATIC,   SINGULAR, FLOAT,    omega_x,           8) \
 X(a, STATIC,   SINGULAR, FLOAT,    omega_y,           9) \
-X(a, STATIC,   SINGULAR, FLOAT,    omega_z,           10) \
-X(a, STATIC,   SINGULAR, FLOAT,    linearAccel_x,     11) \
-X(a, STATIC,   SINGULAR, FLOAT,    linearAccel_y,     12) \
-X(a, STATIC,   SINGULAR, FLOAT,    linearAccel_z,     13) \
-X(a, STATIC,   SINGULAR, FLOAT,    mag_x,             14) \
-X(a, STATIC,   SINGULAR, FLOAT,    mag_y,             15) \
-X(a, STATIC,   SINGULAR, FLOAT,    mag_z,             16) \
-X(a, STATIC,   SINGULAR, FLOAT,    temperature,       17)
-
-
+X(a, STATIC,   SINGULAR, FLOAT,    omega_z,          10) \
+X(a, STATIC,   SINGULAR, FLOAT,    linearAccel_x,    11) \
+X(a, STATIC,   SINGULAR, FLOAT,    linearAccel_y,    12) \
+X(a, STATIC,   SINGULAR, FLOAT,    linearAccel_z,    13) \
+X(a, STATIC,   SINGULAR, FLOAT,    magnitude_x,      14) \
+X(a, STATIC,   SINGULAR, FLOAT,    magnitude_y,      15) \
+X(a, STATIC,   SINGULAR, FLOAT,    magnitude_z,      16) \
+X(a, STATIC,   SINGULAR, FLOAT,    temperature,      17)
 #define downlink_proto_IMUMetrics_CALLBACK NULL
 #define downlink_proto_IMUMetrics_DEFAULT NULL
 
@@ -257,9 +255,9 @@ extern const pb_msgdesc_t downlink_proto_SystemMetrics_msg;
 #define downlink_proto_AnalogMetrics_size        20
 #define downlink_proto_Timestamp_size            66
 #define downlink_proto_PowerSupplyMetrics_size   20
-#define downlink_proto_IMUMetrics_size           65
+#define downlink_proto_IMUMetrics_size           87
 #define downlink_proto_SpaceComputerMetrics_size 15
-#define downlink_proto_SystemMetrics_size        210
+#define downlink_proto_SystemMetrics_size        232
 
 #ifdef __cplusplus
 } /* extern "C" */
