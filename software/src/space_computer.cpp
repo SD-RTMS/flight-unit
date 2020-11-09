@@ -26,5 +26,10 @@ downlink_proto_SystemMetrics space_computer::read(downlink_proto_SystemMetrics d
         Serial.println("Reading from space computer...");
     #endif
 
+    //TODO
+    data.computer.power_current = 99;
+    data.computer.power_voltage = 99;
+    data.computer.temperature_die = 99;
+
     return data;
 }
