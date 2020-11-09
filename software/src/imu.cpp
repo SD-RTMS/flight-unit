@@ -59,8 +59,8 @@ downlink_proto_SystemMetrics IMU::read(downlink_proto_SystemMetrics data)
     device.getEvent(&event);
     quat = device.getQuat();
     magnet = device.getVector(Adafruit_BNO055::VECTOR_MAGNETOMETER);
-    omega = device.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER);
-    linearAccel = device.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
+    omega = device.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
+    linearAccel = device.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER);
 
     data.imu.euler_x = event.orientation.x;
     data.imu.euler_y = event.orientation.y;
@@ -76,9 +76,9 @@ downlink_proto_SystemMetrics IMU::read(downlink_proto_SystemMetrics data)
     data.imu.linearAccel_x = linearAccel.x();
     data.imu.linearAccel_y = linearAccel.y();
     data.imu.linearAccel_z = linearAccel.z();
-    data.imu.mag_x = magnet.x();
-    data.imu.mag_y = magnet.y();
-    data.imu.mag_z = magnet.z();
+    data.imu.magnitude_x = magnet.x();
+    data.imu.magnitude_y = magnet.y();
+    data.imu.magnitude_y = magnet.z();
 
     int8_t temp = device.getTemp();
     data.imu.temperature = temp;
