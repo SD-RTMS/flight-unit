@@ -67,9 +67,9 @@ downlink_proto_SystemMetrics IMU::read(downlink_proto_SystemMetrics data)
     data.imu.quat_b = quat.x();
     data.imu.quat_c = quat.y();
     // TODO: add 4th quat value to struct
-    data.imu.omega_x = event.gyro.x;
-    data.imu.omega_y = event.gyro.y;
-    data.imu.omega_z = event.gyro.z;
+    data.imu.omega_x = event.acceleration.x;
+    data.imu.omega_y = event.acceleration.y;
+    data.imu.omega_z = event.acceleration.z;
     data.imu.magnitude_x = magnet.x();
     data.imu.magnitude_y = magnet.y();
     data.imu.magnitude_z = magnet.z();
