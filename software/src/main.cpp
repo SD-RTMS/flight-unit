@@ -46,81 +46,52 @@ WDT_T4<WDT1> dog;
 */
 void setup()
 {
-  bool IMU_INT = false;
-  bool ANALOG_INT = false;
-  bool DIGITAL_INT = false;
-  bool SPACECOMP_INT = false;
-  bool MEMIF_INT = false;
-
   Serial.begin(115200);
   #if DEBUG
     while (!Serial)
       delay(10);
     Serial.println("Starting up");
   #endif
-  
-  
-  while (IMU_INT == false || ANALOG_INT==false || DIGITAL_INT==false || SPACECOMP_INT==false || MEMIF_INT==false){
+
     uint8_t cnt = 1;
     while (!Imu.init() && cnt <= INIT_ATTEMPTS)
     {
-      Serial.println("IMU DID NOT INIT");
+      //Serial.println("IMU DID NOT INIT");
       digitalIo.write_led(CODE1);
-      if(Imu.init() == true){
-        IMU_INT = true;
-      }
       cnt++;
     }
     
     cnt = 1;
     while (!memIf.init() && cnt <= INIT_ATTEMPTS)
     {
-      Serial.println("MEMORY INTERFACE DID NOT INIT");
+      //Serial.println("MEMORY INTERFACE DID NOT INIT");
       digitalIo.write_led(CODE2);
-      if(memIf.init()==true){
-        MEMIF_INT = true;
-      }
       cnt++;
     }
     
     cnt = 1;
     while (!analogIo.init() && cnt <= INIT_ATTEMPTS)
     {
-      Serial.println("ANALOG IO DID NOT INIT");
+      //Serial.println("ANALOG IO DID NOT INIT");
       digitalIo.write_led(CODE3);
-      if(analogIo.init() == true){
-        ANALOG_INT = true;
-      }
       cnt++;
-      
-
     }
 
     cnt = 1;
     while (!digitalIo.init() && cnt <= INIT_ATTEMPTS)
     {
-      Serial.println("DIGITAL IO DID NOT INIT");
+      //Serial.println("DIGITAL IO DID NOT INIT");
       digitalIo.write_led(CODE4);
-      if(digitalIo.init()==true){
-        DIGITAL_INT = true;
-      }
-      cnt++;
-      
+      cnt++; 
     }
 
     cnt = 1;
     while (!spaceComp.init() && cnt <= INIT_ATTEMPTS)
     {
-      Serial.println("SPACE COMPUTER DID NOT INTI");
+      //Serial.println("SPACE COMPUTER DID NOT INTI");
       digitalIo.write_led(CODE5);
-      if(spaceComp.init()==true){
-        SPACECOMP_INT = true;
-      }
       cnt++;
-      
     }
-
-  }
 
   WDT_timings_t config;
   config.trigger = 5;
@@ -223,6 +194,10 @@ void printPacket(downlink_proto_SystemMetrics packet)
   Serial.printf("quat_a: %f\n", packet.imu.quat_a);
   Serial.printf("quat_b: %f\n", packet.imu.quat_b);
   Serial.printf("quat_c: %f\n", packet.imu.quat_c);
+  Serial.printf("quat_d: %f\n", packet.imu.quat_d);
+  Serial.printf("linearAccel_x: %f\n", packet.imu.linearAccel_x);
+  Serial.printf("linearAccel_y: %f\n", packet.imu.linearAccel_y);
+  Serial.printf("linearAccel_z: %f\n", packet.imu.linearAccel_z);
   Serial.printf("omega_x: %f\n", packet.imu.omega_x);
   Serial.printf("omega_y: %f\n", packet.imu.omega_y);
   Serial.printf("omega_z: %f\n", packet.imu.omega_z);
