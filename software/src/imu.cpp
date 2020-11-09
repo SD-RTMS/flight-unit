@@ -59,20 +59,26 @@ downlink_proto_SystemMetrics IMU::read(downlink_proto_SystemMetrics data)
     device.getEvent(&event);
     quat = device.getQuat();
     magnet = device.getVector(Adafruit_BNO055::VECTOR_MAGNETOMETER);
+    omega = device.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER);
+    linearAccel = device.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
 
     data.imu.euler_x = event.orientation.x;
     data.imu.euler_y = event.orientation.y;
     data.imu.euler_z = event.orientation.z;
+
     data.imu.quat_a = quat.w();
     data.imu.quat_b = quat.x();
     data.imu.quat_c = quat.y();
-    // TODO: add 4th quat value to struct
-    data.imu.omega_x = event.gyro.x;
-    data.imu.omega_y = event.gyro.y;
-    data.imu.omega_z = event.gyro.z;
-    data.imu.magnitude_x = magnet.x();
-    data.imu.magnitude_y = magnet.y();
-    data.imu.magnitude_z = magnet.z();
+    data.imu.quat_d = quat.z();
+    data.imu.omega_x = omega.x();
+    data.imu.omega_y = omega.y();
+    data.imu.omega_z = omega.z();
+    data.imu.linearAccel_x = linearAccel.x();
+    data.imu.linearAccel_y = linearAccel.y();
+    data.imu.linearAccel_z = linearAccel.z();
+    data.imu.mag_x = magnet.x();
+    data.imu.mag_y = magnet.y();
+    data.imu.mag_z = magnet.z();
 
     int8_t temp = device.getTemp();
     data.imu.temperature = temp;
