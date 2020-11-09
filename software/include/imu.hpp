@@ -13,6 +13,8 @@ private:
     sensors_event_t  event;
     imu::Quaternion quat;
     imu::Vector<3> magnet;
+    imu::Vector<3> omega;
+    imu::Vector<3> linearAccel;
     bool enabled;
 
     // TODO: add any helper vars here

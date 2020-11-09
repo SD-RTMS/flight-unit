@@ -50,11 +50,58 @@ downlink_proto_SystemMetrics digital_io::read(downlink_proto_SystemMetrics data)
     return data;
 }
 
-bool digital_io::write_led(uint8_t led, ledCode code)
+bool digital_io::write_led(ledCode code)
 {
     #if DEBUG
         Serial.println("writing LED code");
     #endif
+
+    if (code == CODE1){ //001  --- IMU
+        digitalWrite(LED_0, HIGH);
+        delay(500);
+        digitalWrite(LED_0, LOW);
+        delay(100);
+        //Serial.println("IMU LIGHT");
+
+    }
+    
+    if (code == CODE2){ //010   MEMORY IF
+        digitalWrite(LED_1,HIGH);
+        delay(500);
+        digitalWrite(LED_1, LOW);
+        delay(100);
+        //Serial.println("MEM LIGHT");
+    }
+    if (code == CODE3){ //011 ANALOG 
+        digitalWrite(LED_0, HIGH);
+        digitalWrite(LED_1, HIGH);
+        delay(500);
+        digitalWrite(LED_0, LOW);
+        digitalWrite(LED_1, LOW);
+        delay(100);
+        //Serial.println("ANALOG LIGHT");
+    }
+    if (code == CODE4){ //100 DIGITAL
+        digitalWrite(LED_2, HIGH);
+        delay(500);
+        digitalWrite(LED_2, LOW);
+        delay(100);
+        //Serial.println("DIGITAL LIGHT");
+
+    }
+    if (code == CODE5){ //101 SPACE COMP
+        digitalWrite(LED_0,HIGH);
+        digitalWrite(LED_2,HIGH);
+        delay(500);
+        digitalWrite(LED_0, LOW);
+        digitalWrite(LED_2, LOW);
+        delay(100);
+        //Serial.println("SPACE COMP LIGHT");
+    }
+
+    
+        
+
 
     return true;
 }

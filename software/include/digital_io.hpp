@@ -25,10 +25,11 @@
  */
 typedef enum ledCode
 {
-    CODE1,
-    CODE2,
-    CODE3,
-    CODE4,
+    CODE1,  //IMU (001)
+    CODE2,  //MEMIF (010)
+    CODE3,  //ANALOG (011) 
+    CODE4,  //DIGITAL (100)
+    CODE5   //SPACE COMP (111)
 } ledCode;
 
 /**
@@ -62,7 +63,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool write_led(uint8_t, ledCode);
+    bool write_led(ledCode);
 };
 
 #endif // DIGITAL_IO_HPP
