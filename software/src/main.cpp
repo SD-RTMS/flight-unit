@@ -42,7 +42,12 @@ WDT_T4<WDT1> dog;
  */
 void setup()
 {
-  
+  bool IMU_INT = false;
+  bool ANALOG_INT = false;
+  bool DIGITAL_INT = false;
+  bool SPACECOMP_INT = false;
+  bool MEMIF_INT = false;
+
   Serial.begin(115200);
   #if DEBUG
     while (!Serial)
@@ -50,40 +55,67 @@ void setup()
     Serial.println("Starting up");
   #endif
   
-  uint8_t cnt = 1;
-  while (!Imu.init() && cnt <= INIT_ATTEMPTS)
-  {
-    Serial.println("IMU DID NOT INIT");
-    delayMicroseconds(100);
-    cnt++;
-  }
   
-  cnt = 1;
-  while (!memIf.init() && cnt <= INIT_ATTEMPTS)
-  {
-    delayMicroseconds(100);
-    cnt++;
-  }
-  
-  cnt = 1;
-  while (!analogIo.init() && cnt <= INIT_ATTEMPTS)
-  {
-    delayMicroseconds(100);
-    cnt++;
-  }
+  while (IMU_INT == false || ANALOG_INT==false || DIGITAL_INT==false || SPACECOMP_INT==false || MEMIF_INT==false){
+    uint8_t cnt = 1;
+    while (!Imu.init() && cnt <= INIT_ATTEMPTS)
+    {
+      Serial.println("IMU DID NOT INIT");
+      digitalIo.write_led(CODE1);
+      if(Imu.init() == true){
+        IMU_INT = true;
+      }
+      cnt++;
+    }
+    
+    cnt = 1;
+    while (!memIf.init() && cnt <= INIT_ATTEMPTS)
+    {
+      Serial.println("MEMORY INTERFACE DID NOT INIT");
+      digitalIo.write_led(CODE2);
+      if(memIf.init()==true){
+        MEMIF_INT = true;
+      }
+      cnt++;
+    }
+    
+    cnt = 1;
+    while (!analogIo.init() && cnt <= INIT_ATTEMPTS)
+    {
+      Serial.println("ANALOG IO DID NOT INIT");
+      digitalIo.write_led(CODE3);
+      if(analogIo.init() == true){
+        ANALOG_INT = true;
+      }
+      cnt++;
+      
 
-  cnt = 1;
-  while (!digitalIo.init() && cnt <= INIT_ATTEMPTS)
-  {
-    delayMicroseconds(100);
-    cnt++;
-  }
+    }
 
-  cnt = 1;
-  while (!spaceComp.init() && cnt <= INIT_ATTEMPTS)
-  {
-    delayMicroseconds(100);
-    cnt++;
+    cnt = 1;
+    while (!digitalIo.init() && cnt <= INIT_ATTEMPTS)
+    {
+      Serial.println("DIGITAL IO DID NOT INIT");
+      digitalIo.write_led(CODE4);
+      if(digitalIo.init()==true){
+        DIGITAL_INT = true;
+      }
+      cnt++;
+      
+    }
+
+    cnt = 1;
+    while (!spaceComp.init() && cnt <= INIT_ATTEMPTS)
+    {
+      Serial.println("SPACE COMPUTER DID NOT INTI");
+      digitalIo.write_led(CODE5);
+      if(spaceComp.init()==true){
+        SPACECOMP_INT = true;
+      }
+      cnt++;
+      
+    }
+
   }
 
   WDT_timings_t config;
@@ -92,7 +124,7 @@ void setup()
   dog.begin(config);
  
 
-}//*/
+}
 
 /**
  * @brief main program loop
