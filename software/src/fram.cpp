@@ -36,6 +36,7 @@ fram::fram(uint8_t CS)
     next_write_addr = 0;
     next_read_addr = 0; 
     last_packet_len = 0;
+    lenIdx = 0;
 }
 
 bool fram::init()
@@ -45,6 +46,7 @@ bool fram::init()
 
 DownlinkMessage fram::read()
 {
+    last_packet_len = lenHistory[lenIdx];
     if (last_packet_len <= 0 || next_read_addr < 0)
     {
         #if DEBUG
@@ -56,14 +58,14 @@ DownlinkMessage fram::read()
     }
 
     uint8_t rawPacket[last_packet_len];
-
     for (uint16_t offset = 0; offset < last_packet_len; ++offset)
     {
         rawPacket[offset] = device.read8(uint32_t(next_read_addr) + uint32_t(offset));
     }
     
     next_write_addr = next_read_addr;
-    next_read_addr -= last_packet_len;
+    lenIdx--;
+    next_read_addr -= lenHistory[lenIdx];
     
     DownlinkMessage msg(rawPacket);
     return msg;
@@ -89,7 +91,9 @@ bool fram::write(downlink_proto_SystemMetrics data)
         }
         next_read_addr = next_write_addr;
         next_write_addr += packet_length;
-        last_packet_len = packet_length;
+        //last_packet_len = packet_length;
+        lenIdx++;
+        lenHistory[lenIdx] = packet_length;
         
         delete [] packet;
         return true;

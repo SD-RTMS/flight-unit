@@ -22,9 +22,8 @@
 #include "RTClib.h"
 #include <TimeLib.h>
 
-
 #define INIT_ATTEMPTS 3
-#define SAMP_DELAY 5000
+#define SAMP_DELAY 3000
 #define WD_ALERT_MS 10000
 #define TIME_HEADER "T" 
 
@@ -116,6 +115,7 @@ void loop()
 {
   downlink_proto_SystemMetrics packet = downlink_proto_SystemMetrics_init_zero;
   DownlinkMessage msg;
+  int stored_packets = 0;
   bool valid;
 
   while (1)
@@ -145,24 +145,46 @@ void loop()
     // send or store packet
     if (Serial)
     {
+      if (stored_packets > 0)
+      {
+        #if DEBUG
+          Serial.printf("Dumping %d stored packets.\n",stored_packets);
+        #endif
+        // dump all the stored packets
+        for (int i = 0; i < stored_packets; ++i)
+        {
+          memIf.read(msg);
+          uint16_t packet_length = msg.packetLength();
+          uint8_t *pkt = new uint8_t[packet_length];
+          msg.packet(pkt, packet_length);
+          Serial.write(pkt, packet_length);
+          delete[] pkt;
+          dog.feed();
+          delay(250);
+
+        }
+      }
       msg = DownlinkMessage(packet);
       uint16_t packet_length = msg.packetLength();
-      uint8_t *packet = new uint8_t[packet_length];
-      msg.packet(packet, packet_length);
-      Serial.write(packet, packet_length);
-      delete[] packet;
+      uint8_t *pkt = new uint8_t[packet_length];
+      msg.packet(pkt, packet_length);
+      Serial.write(pkt, packet_length);
+      delete[] pkt;
+      stored_packets = 0;
     }
     else
     {
       memIf.write(packet);
+      stored_packets++;
     }
 
     #if DEBUG
       printPacket(packet);
     #endif
 
-    delay(SAMP_DELAY);
     dog.feed();
+    delay(SAMP_DELAY);
+    
   }
 }
 

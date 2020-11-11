@@ -27,9 +27,10 @@ downlink_proto_SystemMetrics space_computer::read(downlink_proto_SystemMetrics d
     #endif
 
     //TODO
-    data.computer.power_current = 99;
-    data.computer.power_voltage = 99;
-    data.computer.temperature_die = 99;
+    data.computer.power_current = 0.232;
+    data.computer.power_voltage = 1.8;
+    data.computer.temperature_die = 45;
+    data.has_computer = true;
 
     return data;
 }
