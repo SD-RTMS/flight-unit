@@ -17,6 +17,8 @@ public:
     memory_if();
     ~memory_if();
 
+    void reset();
+
     bool init();
 
     bool read(DownlinkMessage &);

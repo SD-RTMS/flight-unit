@@ -88,6 +88,13 @@ bool memory_if::init()
     return success;
 }
 
+void memory_if::reset()
+{
+    device1.reset();
+    device2.reset();
+    device3.reset();
+}
+
 bool memory_if::write(downlink_proto_SystemMetrics data)
 {
     #if DEBUG

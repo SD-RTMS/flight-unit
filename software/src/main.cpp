@@ -163,6 +163,7 @@ void loop()
           delay(250);
 
         }
+        memIf.reset();
       }
       msg = DownlinkMessage(packet);
       uint16_t packet_length = msg.packetLength();

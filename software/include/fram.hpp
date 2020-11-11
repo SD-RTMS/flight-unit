@@ -23,7 +23,7 @@ private:
     uint16_t last_packet_len;
     Adafruit_FRAM_SPI device;
     uint16_t lenHistory[10000];
-    uint16_t lenIdx;
+    uint16_t rdlenIdx, wrlenIdx;
 
     bool write_byte(uint8_t);
 
@@ -56,6 +56,8 @@ public:
      * @return false 
      */
     bool write(downlink_proto_SystemMetrics data);
+
+    void reset();
 
 };
 
