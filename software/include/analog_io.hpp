@@ -24,7 +24,7 @@ class analog_io
 {
 private:
     const uint8_t bank[5] = {SC_D0, SC_D1, SC_D2, SC_D3, SC_D4};
-    const int BETA = 3539; //TODO: get exact value
+    const int BETA = 3539; 
     const int ADC_PREC = 12;
     const float VREF = 3.3;
     int MAX_ADC_VAL;
