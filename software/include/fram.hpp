@@ -8,6 +8,9 @@
 #include "Adafruit_FRAM_SPI.h"
 #include <inttypes.h>
 #include "donwlink_message.hpp"
+#include <stack>
+
+
 
 #define FRAM_BYTE_CAPACITY 2000
 
@@ -19,6 +22,8 @@ private:
     uint16_t next_read_addr;
     uint16_t last_packet_len;
     Adafruit_FRAM_SPI device;
+    uint16_t lenHistory[10000];
+    uint16_t lenIdx;
 
     bool write_byte(uint8_t);
 
